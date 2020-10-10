@@ -14,5 +14,13 @@ const db = require('../models');
 //   process.exit();
 // });
 
+// POST Create
+router.post('/', (req, res) => {
+  db.User.create(req.body, (err, newUser) => {
+    if (err) return console.log(err);
+    res.redirect('/activities');
+  });
+});
+
 module.exports = router;
 
