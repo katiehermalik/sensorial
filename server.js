@@ -17,6 +17,7 @@ app.set('view engine', 'ejs');
 const ctrl = require('./controllers');
 
 // Middleware
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -27,6 +28,16 @@ app.use(methodOverride('_method'));
 // Root route (landing page)
 app.get('/', (req, res) => {
   res.render('./landing');
+});
+
+// About route
+app.get('/about', (req, res) => {
+  res.render('./about');
+});
+
+//Contact route
+app.get('/contact', (req, res) => {
+  res.render('./contact');
 });
 
 // Routes
