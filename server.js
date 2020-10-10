@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 4000;
 app.set('view engine', 'ejs');
 
 // CONTROLLERS
+const ctrl = require('./controllers');
 
 // Middleware
 app.use(bodyParser.urlencoded({extended: false}));
@@ -28,6 +29,9 @@ app.get('/', (req, res) => {
   res.render('./landing');
 });
 
+// Routes
+app.use('/users', ctrl.users);
+app.use('/activities', ctrl.activities);
 
 //Listener
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
