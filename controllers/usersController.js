@@ -17,6 +17,7 @@ const db = require('../models');
 // POST Create
 router.post('/', (req, res) => {
   db.User.create(req.body, (err, newUser) => {
+    console.log(newUser);
     if (err) return console.log(err);
     const context = {
       user: newUser,
@@ -27,9 +28,10 @@ router.post('/', (req, res) => {
 
 // GET Show
 router.get('/', (req, res) => {
-  console.log(req.body);
-  db.User.find({username: req.body.username},
+  console.log(req.query);
+  db.User.findOne({username: req.query.username},
     (err, foundUser) => {
+    console.log(foundUser);
     if (err) return console.log(err);
     const context = {
       user: foundUser,
