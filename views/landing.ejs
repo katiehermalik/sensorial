@@ -17,14 +17,16 @@
     <a id="login" href="#!" onclick="loginModal()">Login</a>
   </nav>
   <div hidden class="sign-up-modal">
-      <form action="/users" method="POST">
+      <form action="/" method="POST">
         <label for="username">Username</label>
         <input type="text" name="username">
         <label for="email">Email</label>
         <input type="text" name="email">
         <label for="password">Password</label>
         <input type="text" name="password">
-        <input type="submit" value="Sign Up">
+        <label for="picture">Profile Picture</label>
+        <input type="text" name="picture">
+        <input onclick="modalSwitcharoo()" type="submit" value="Sign Up">
       </form>
   </div>
   <div hidden class="login-modal">

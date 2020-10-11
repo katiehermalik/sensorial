@@ -24,6 +24,9 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(morgan(':method :url'));
 
+// Connect to database
+const db = require('./models');
+
 // ------------------------------------------------------ Routes
 
 // Root route (landing page)
@@ -36,9 +39,17 @@ app.get('/about', (req, res) => {
   res.render('./about');
 });
 
-//Contact route
+// Contact route
 app.get('/contact', (req, res) => {
   res.render('./contact');
+});
+
+// Login Route
+app.post('/', (req, res) => {
+  db.User.create(req.body, (err, newUser) => {
+    console.log(newUser);
+    if (err) return console.log(err);
+  });
 });
 
 // Routes

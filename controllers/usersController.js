@@ -15,23 +15,19 @@ const db = require('../models');
 // });
 
 // POST Create
-router.post('/', (req, res) => {
-  db.User.create(req.body, (err, newUser) => {
-    console.log(newUser);
-    if (err) return console.log(err);
-    const context = {
-      user: newUser,
-    }
-    res.render('activities/index', context);
-  });
-});
+// router.post('/', (req, res) => {
+//   db.User.create(req.body, (err, newUser) => {
+//     console.log(newUser);
+//     if (err) return console.log(err);
+//     res.end();
+//   });
+// });
 
-// GET Show
+// GET Show (Activity index page)
 router.get('/', (req, res) => {
   console.log(req.query);
-  db.User.findOne({username: req.query.username},
-    (err, foundUser) => {
-    console.log(foundUser);
+  db.User.findOneAndUpdate({username: req.query.username}, {isLoggedin: true}, 
+    {new: true}, (err, foundUser) => {
     if (err) return console.log(err);
     const context = {
       user: foundUser,
