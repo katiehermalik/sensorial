@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  picture: String,
+  isLoggedin: {
+    type: Boolean,
+    default: false,
+  },
   activities: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Activity'
