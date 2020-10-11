@@ -18,9 +18,26 @@ const db = require('../models');
 router.post('/', (req, res) => {
   db.User.create(req.body, (err, newUser) => {
     if (err) return console.log(err);
-    res.redirect('/activities');
+    const context = {
+      user: newUser,
+    }
+    res.render('activities/index', context);
   });
 });
+
+// GET Show
+router.get('/', (req, res) => {
+  console.log(req.body);
+  db.User.find({username: req.body.username},
+    (err, foundUser) => {
+    if (err) return console.log(err);
+    const context = {
+      user: foundUser,
+    }
+    res.render('activities/index', context);
+  });
+});
+
 
 module.exports = router;
 

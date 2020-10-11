@@ -18,12 +18,11 @@ app.set('view engine', 'ejs');
 const ctrl = require('./controllers');
 
 // Middleware
-app.use(morgan(':method :url'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
 app.use(methodOverride('_method'));
+app.use(morgan(':method :url'));
 
 // ------------------------------------------------------ Routes
 
