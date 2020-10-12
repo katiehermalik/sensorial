@@ -4,7 +4,8 @@ const router = express.Router();
 // Database connection
 const db = require('../models');
 const activities = require('./activitiesSeedData');
-const prompts = require('./promptSeedData')
+const prompts = require('./promptSeedData');
+//const user = require('../models/User')
 
 // Current path '/activities'
 
@@ -14,6 +15,7 @@ router.get('/', (req, res) => {
     activities: activities,
   });
 });
+// async try & catch // promises (once this executes, run this other thing)
 
 // GET Show /:id
 router.get('/:id', (req, res)=>{
