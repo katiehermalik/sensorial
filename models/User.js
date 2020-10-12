@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -12,6 +13,11 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  picture: String,
+  isLoggedin: {
+    type: Boolean,
+    default: false,
   },
   activities: [{
     type: mongoose.Schema.Types.ObjectId,

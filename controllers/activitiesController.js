@@ -4,7 +4,7 @@ const router = express.Router();
 // Database connection
 const db = require('../models');
 
-// Current location /activities
+// Current path '/activities'
 
 // GET Index
 router.get('/', (req, res) => {

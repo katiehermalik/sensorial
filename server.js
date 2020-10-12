@@ -17,13 +17,27 @@ app.set('view engine', 'ejs');
 // CONTROLLERS
 const ctrl = require('./controllers');
 
+// Custom middleware - checking who is logged in and 
+// granting views access too that user's document.
+app.use((req, res, next) => {
+  db.User.findOne({isLoggedin: true}, (err, foundUser) => {
+    if (err) return console.log(err);
+    user = foundUser;
+    res.locals.user = req.user;
+  });
+  next();
+});
+
 // Middleware
-app.use(morgan(':method :url'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
 app.use(methodOverride('_method'));
+app.use(morgan(':method :url'));
+
+
+// Connect to database
+const db = require('./models');
 
 // ------------------------------------------------------ Routes
 
@@ -37,10 +51,32 @@ app.get('/about', (req, res) => {
   res.render('./about');
 });
 
-//Contact route
+// Contact route
 app.get('/contact', (req, res) => {
   res.render('./contact');
 });
+
+// POST Create user (sign up modal)
+app.post('/', (req, res) => {
+  db.User.create(req.body, (err, newUser) => {
+    if (err) return console.log(err);
+  });
+});
+
+// GET Current Prompt / Activities Index
+app.get('/currentprompt', (req, res) => {
+  res.redirect('activities');
+});
+
+// GET Logout (updates current user 'isloggedin' to false)
+app.get('/logout', (req, res) => {
+  db.User.findOneAndUpdate({isLoggedin: true}, {isLoggedin: false}, 
+    {new: true}, (err, foundUser) => {
+    if (err) return console.log(err);
+    res.redirect('/');
+  });
+});
+
 
 // Routes
 app.use('/users', ctrl.users);

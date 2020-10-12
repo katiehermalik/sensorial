@@ -7,20 +7,39 @@ const db = require('../models');
 
 // Current Path = '/users'
 
-// Seed data (minus image for now)
-// const userSeedData = require('./userSeedData');
-// db.User.insertMany(userSeedData, (err, data) => {
-//   console.log('added user data');
-//   process.exit();
-// });
-
-// POST Create
+// POST Show (Activity index page)
 router.post('/', (req, res) => {
-  db.User.create(req.body, (err, newUser) => {
+  console.log(req.body);
+  db.User.findOneAndUpdate({username: req.body.username}, {isLoggedin: true}, 
+    {new: true}, (err, foundUser) => {
     if (err) return console.log(err);
-    res.redirect('/activities');
+    const context = {
+      user: foundUser,
+    }
+    res.render('activities/index', context);
   });
 });
+
+// GET Edit
+router.get('/edit', (req, res) => {
+  res.render('users/edit');
+});
+
+
+
+// PUT update
+router.put('/:userId', (req, res) => {
+  db.User.findByIdAndUpdate(
+    req.params.userId,
+    req.body,
+    { new: true },
+    (err, updatedUser) => {
+      if (err) return console.log(err);
+      res.redirect(`/users/edit`);
+    }
+  );
+});
+
 
 module.exports = router;
 
