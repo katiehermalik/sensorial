@@ -17,13 +17,6 @@ app.set('view engine', 'ejs');
 // CONTROLLERS
 const ctrl = require('./controllers');
 
-// Middleware
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-app.use(methodOverride('_method'));
-app.use(morgan(':method :url'));
-
 // Custom middleware - checking who is logged in and 
 // granting views access too that user's document.
 app.use((req, res, next) => {
@@ -34,6 +27,14 @@ app.use((req, res, next) => {
   });
   next();
 });
+
+// Middleware
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(methodOverride('_method'));
+app.use(morgan(':method :url'));
+
 
 // Connect to database
 const db = require('./models');
@@ -62,10 +63,20 @@ app.post('/', (req, res) => {
   });
 });
 
-// GET Current Prompt (activities index)
+// GET Current Prompt / Activities Index
 app.get('/currentprompt', (req, res) => {
   res.redirect('activities');
 });
+
+// GET Logout (updates current user 'isloggedin' to false)
+app.get('/logout', (req, res) => {
+  db.User.findOneAndUpdate({isLoggedin: true}, {isLoggedin: false}, 
+    {new: true}, (err, foundUser) => {
+    if (err) return console.log(err);
+    res.redirect('/');
+  });
+});
+
 
 // Routes
 app.use('/users', ctrl.users);
