@@ -8,24 +8,18 @@ const db = require('../models');
 // Current Path = '/users'
 
 
-// GET Edit
-router.get('/edit', (req, res) => {
-  res.render('users/edit');
-});
 
-// PUT update
-router.put('/:userId', (req, res) => {
-  db.User.findByIdAndUpdate(
-    req.params.userId,
-    req.body,
-    { new: true },
-    (err, updatedUser) => {
+// Get show
+router.get('/:userId', (req, res) => {
+  db.User.findById((req.params.userId),
+    (err, foundUser) => {
       if (err) return console.log(err);
-      res.redirect(`/users/edit`);
-    }
-  );
+      const context = {
+        user: foundUser,
+      };
+      res.render('users/show', context);
+    });
 });
-
 
 module.exports = router;
 
