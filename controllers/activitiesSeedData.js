@@ -23,25 +23,4 @@ module.exports = [
     photo: 'http://www.mericherry.com/wp-content/uploads/2013/11/outerspace11.jpg'},
     {timestamp: (1412180887, 1)}];
 
-const activitySchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    promptInfo: 
-    {   name: String,
-        materials: String,
-        instructions: String,
-        experienceGoals: String,
-        vocabulary: String},
-    note: {
-        type: String,
-        max: 20,
-    },
-    experienceDesc: {
-        type: String,
-        max: 600,
-    },
-    photo: String,
-}, {timestamp: true}); 
   
