@@ -7,10 +7,20 @@
 </head>
 <body>
   <% if (user === null) { %>
+    <%-include ('partials/loggedOutLogo')%>
+  <% } else if (user.isLoggedin === true) { %>
+    <%-include ('partials/loggedInLogo')%>
+  <% } %>
+  <% if (user === null) { %>
     <%-include ('partials/loggedOutNav')%>
   <% } else if (user.isLoggedin === true) { %>
     <%-include ('partials/loggedInNav')%>
   <% } %>
   <h1>About Sensorial</h1>
+  <% if (user === null) { %>
+    <%-include ('partials/loggedOutFooter')%>
+  <% } else if (user.isLoggedin === true) { %>
+    <%-include ('partials/loggedInFooter')%>
+  <% } %>
 </body>
 </html>

@@ -19,14 +19,14 @@ const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
 // granting views access too that user's document.
-app.use('/', (req, res, next) => {
+app.use((req, res, next) => {
   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
     if (err) return console.log(err);
-    user = foundUser;
-    res.locals.user = req.user;
+    res.locals.user = foundUser;
+    next();
   });
-  next();
 });
+
 
 // Middleware
 app.use(express.static('public'));
@@ -65,25 +65,25 @@ app.post('/', (req, res) => {
 
 // GET Current Prompt
 app.get('/currentprompt', (req, res) => {
-  res.render('currentprompt');
+  const context = {
+    user: res.locals.user,
+  }
+  res.render('currentprompt', context);
 });
 
-// POST Login (updates user 'isloggedin' to true)
-app.post('/currentprompt', (req, res) => {
+// PUT Login (updates user 'isloggedin' to true)
+app.put('/currentprompt', (req, res) => {
   db.User.findOneAndUpdate({username: req.body.username}, {isLoggedin: true}, 
-    {new: true}, (err, foundUser) => {
+    {new: true}, (err) => {
     if (err) return console.log(err);
-    const context = {
-      user: foundUser,
-    }
-    res.render('currentprompt', context);
+    res.redirect('currentprompt');
   });
 });
 
 // GET Logout (updates current user 'isloggedin' to false)
 app.get('/logout', (req, res) => {
   db.User.findOneAndUpdate({isLoggedin: true}, {isLoggedin: false}, 
-    {new: true}, (err, foundUser) => {
+    {new: true}, (err) => {
     if (err) return console.log(err);
     res.redirect('/');
   });

@@ -6,9 +6,11 @@
   <title>Prompt</title>
 </head>
 <body>
+  <%-include ('./partials/loggedInLogo')%>
   <%-include ('./partials/loggedInNav')%>
   <h1>Prompt</h1>
   <h2>Hello <%=user.username%></h2>
   <button>My Activities Journal</button>
+  <%-include ('./partials/loggedInFooter')%>
 </body>
 </html>
