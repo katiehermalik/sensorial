@@ -8,6 +8,15 @@
 <body>
   <%-include ('../partials/loggedInNav')%>
   <h1>Prompt</h1>
-  <!--<h2>Hello <%=user.username%></h2>--->
+  <h2>Hello <%=user.username%></h2>
+    <ul>
+    <% for (let i =0; i<activities.length; i++){ %> 
+      <li >
+        <a href="/activities/<%= activities[i]._id %>" >
+          <%= activities[i].title %>
+        </a>
+        </li>
+      <% } %>
+    </ul>
 </body>
 </html>

@@ -16,5 +16,6 @@ mongoose.connection.on('error', (err) => {
 
 module.exports = {
   User: require('./User'),
-  Activity: require('./Activity')
+  Activity: require('./Activity'),
+  Prompt: require('./Prompt')
 };

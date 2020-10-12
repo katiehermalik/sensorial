@@ -3,7 +3,8 @@ const router = express.Router();
 
 // Database connection
 const db = require('../models');
-const activities = require('./activitiesSeedData')
+const activities = require('./activitiesSeedData');
+const prompts = require('./promptSeedData')
 
 // Current path '/activities'
 
@@ -59,11 +60,31 @@ router.get('/:activityId/edit', (req, res)=>{
       console.log(err);
     }
     res.render('activities/edit')
-  })
-})
+  });
+});
 
 // PATCH/PUT Update /:id
+router.put('/:articleId', (req, res)=>{
+  db.Activity.findByIdAndUpdate(
+    req.params.activityId,
+    req.body,
+    {new: true},
+    (err, updatedActivity) => {
+      if (err) return console.log(err);
+
+      res.redirect(`/activities/${updatedActivity._id}`);
+    }
+  );
+});
 
 // DELETE destroy /:id
+router.delete('/:activityId', (req, res) => {
+  const activityId = req.params.activityId
+  db.Activity.findbyIdAndDelete(activityId, (err)=>{
+    if (err) return console.log(err);
+
+    res.redirect('/activities')
+  })
+})
 
 module.exports = router;

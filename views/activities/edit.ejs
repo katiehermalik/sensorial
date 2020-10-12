@@ -8,7 +8,7 @@
   <body>
     <%-include ('../partials/loggedInNav')%>
     <h1>Edit Activity</h1>
-    <p><%= activities.promptInfo.name %></p>
+    <p><%= prompt.name %></p>
     <section class="editActivityForm">
       <form action="/activities/<%= activity._id %>?_method=PUT" method="POST">
         <div>

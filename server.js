@@ -19,7 +19,7 @@ const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
 // granting views access too that user's document.
-app.use((req, res, next) => {
+app.use('/', (req, res, next) => {
   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
     if (err) return console.log(err);
     user = foundUser;
@@ -63,9 +63,21 @@ app.post('/', (req, res) => {
   });
 });
 
-// GET Current Prompt / Activities Index
+// GET Current Prompt
 app.get('/currentprompt', (req, res) => {
-  res.redirect('activities');
+  res.render('currentprompt');
+});
+
+// POST Login (updates user 'isloggedin' to true)
+app.post('/currentprompt', (req, res) => {
+  db.User.findOneAndUpdate({username: req.body.username}, {isLoggedin: true}, 
+    {new: true}, (err, foundUser) => {
+    if (err) return console.log(err);
+    const context = {
+      user: foundUser,
+    }
+    res.render('currentprompt', context);
+  });
 });
 
 // GET Logout (updates current user 'isloggedin' to false)
