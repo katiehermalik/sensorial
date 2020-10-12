@@ -30,12 +30,11 @@ router.get('/:id', (req, res)=>{
       activities: {message: 'activity does not exist.'},
     })
   };
-  
 });
 
 // GET New
 router.get('/new', (req, res)=>{
-  db.activities.find({}, (err, allActivities)=>{
+  db.Activity.find({}, (err, allActivities)=>{
     if (err) return console.log(err);
 
     const context = {allActivities};
