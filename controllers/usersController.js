@@ -20,6 +20,29 @@ router.post('/', (req, res) => {
   });
 });
 
+// GET Edit
+router.get('/edit', (req, res) => {
+  res.render('users/edit');
+});
+
+
+
+// PUT update
+router.put('/:userId', (req, res) => {
+  // make query to update database
+  db.User.findByIdAndUpdate(
+    req.params.userId,
+    req.body,
+    { new: true },
+    (err, updatedUser) => {
+      if (err) return console.log(err);
+      
+      // redirect to show route for that article
+      res.redirect(`/users/edit`);
+    }
+  );
+});
+
 
 module.exports = router;
 

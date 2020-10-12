@@ -6,6 +6,11 @@
   <title>About Sensorial</title>
 </head>
 <body>
+  <% if (user.isLoggedin === true) { %>
+    <%-include ('partials/loggedInNav')%>
+  <% } else { %>
+    <%-include ('partials/loggedOutNav')%>
+  <% } %> 
   <h1>About Sensorial</h1>
 </body>
 </html>

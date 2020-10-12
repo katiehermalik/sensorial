@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+</head>
+<body>
+    <%-include ('../partials/loggedInNav')%>
+  <h1>Edit Profile</h1>
+  <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+    <label for="username">Username</label>
+    <input type="text" name="username" value="<%=user.username%>">
+    <label for="email">Email</label>
+    <input type="text" name="email" value="<%=user.email%>">
+    <label for="password">Password</label>
+    <input type="text" name="password" value="<%=user.password%>">
+    <label for="picture">Profile Picture</label>
+    <input type="text" name="picture" value="<%=user.picture%>">
+    <input type="submit" value="Update Profile">
+  </form>
+</body>
+</html>

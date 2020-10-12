@@ -24,12 +24,12 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(morgan(':method :url'));
 
-// Custom middleware - checking who is logged in and granting views at the end of any response access too that user's document.
+// Custom middleware - checking who is logged in and 
+// granting views access too that user's document.
 app.use((req, res, next) => {
   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
-    console.log(foundUser);
     if (err) return console.log(err);
-    user = foundUser
+    user = foundUser;
     res.locals.user = req.user;
   });
   next();
@@ -55,11 +55,16 @@ app.get('/contact', (req, res) => {
   res.render('./contact');
 });
 
-// POST Create user 
+// POST Create user (sign up modal)
 app.post('/', (req, res) => {
   db.User.create(req.body, (err, newUser) => {
     if (err) return console.log(err);
   });
+});
+
+// GET Current Prompt (activities index)
+app.get('/currentprompt', (req, res) => {
+  res.redirect('activities');
 });
 
 // Routes

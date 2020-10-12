@@ -10,13 +10,7 @@
 </head>
 <body>
   <h1>Sensorial</h1>
-  
-  <nav>
-    <a href="/about">About</a> |
-    <a href="/contact">Contact</a> |
-    <a id="sign-up" href="#!" onclick="signUpModal()">Sign Up</a> |
-    <a id="login" href="#!" onclick="loginModal()">Login</a>
-  </nav>
+    <%-include ('partials/loggedOutNav')%>
   <div hidden class="sign-up-modal">
       <form action="/" method="POST">
         <label for="username">Username</label>
@@ -41,4 +35,3 @@
   </div>
 </body>
 </html>
-
