@@ -10,7 +10,6 @@
     <%-include ('partials/loggedOutNav')%>
   <% } else if (user.isLoggedin === true) { %>
     <%-include ('partials/loggedInNav')%>
-    <h2>Hello <%= user.username %></h2>
   <% } %>
   <h1>Contact Us</h1>
   <form action="" method="" id="contact">
@@ -21,5 +20,10 @@
   </form>
   <textarea rows="4" cols="50" name="comment" form="contact">Your message here...</textarea>
   <input type="submit" value="Send" form="contact">
+  <% if (user === null) { %>
+    <%-include ('partials/loggedOutFooter')%>
+  <% } else if (user.isLoggedin === true) { %>
+    <%-include ('partials/loggedInFooter')%>
+  <% } %>
 </body>
 </html>
