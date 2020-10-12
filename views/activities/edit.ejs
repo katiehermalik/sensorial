@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Activity</title>
+  </head>
+  <body>
+    <%-include ('../partials/loggedInNav')%>
+    <h1>Edit Activity</h1>
+    <p><%= activities.promptInfo.name %></p>
+    <section class="editActivityForm">
+      <form action="/activities/<%= activity._id %>?_method=PUT" method="POST">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" name="title" />
+        </div>
+        <div>
+          <label for="note">Note</label>
+          <input type="text" name="note" />
+        </div>
+        <div>
+          <label for="experienceDescription">Experience Description</label>
+          <input type="text" name="experienceDescription" />
+        </div>
+        <div>
+          <label for="photo">Photo</label>
+          <input type="image" name="photo" />
+        </div>
+        <button type="submit">Edit</button>
+      </form>
+    </section>
+  </body>
+</html>
+  

@@ -6,11 +6,9 @@ const activitySchema = new mongoose.Schema({
         required: true,
     },
     promptInfo: 
-    {   name: String,
-        materials: String,
-        instructions: String,
-        experienceGoals: String,
-        vocabulary: String},
+    {   type: mongoose.Schema.Types.ObjectId,
+        ref: './Prompt',
+    },
     note: {
         type: String,
         max: 20,
