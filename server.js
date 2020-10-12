@@ -24,6 +24,17 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(morgan(':method :url'));
 
+// Custom middleware - checking who is logged in and granting views at the end of any response access too that user's document.
+app.use((req, res, next) => {
+  db.User.findOne({isLoggedin: true}, (err, foundUser) => {
+    console.log(foundUser);
+    if (err) return console.log(err);
+    user = foundUser
+    res.locals.user = req.user;
+  });
+  next();
+});
+
 // Connect to database
 const db = require('./models');
 
@@ -44,10 +55,9 @@ app.get('/contact', (req, res) => {
   res.render('./contact');
 });
 
-// Login Route
+// POST Create user 
 app.post('/', (req, res) => {
   db.User.create(req.body, (err, newUser) => {
-    console.log(newUser);
     if (err) return console.log(err);
   });
 });
