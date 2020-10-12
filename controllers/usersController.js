@@ -21,5 +21,14 @@ router.get('/:userId', (req, res) => {
     });
 });
 
+// PUT update
+router.put('/:userId', (req, res) => {
+  db.User.findByIdAndUpdate(req.params.userId, req.body, { new: true },
+    (err, updatedUser) => {
+      if (err) return console.log(err);
+      res.redirect(`/users/${updatedUser._id}`);
+    });
+});
+
 module.exports = router;
 
