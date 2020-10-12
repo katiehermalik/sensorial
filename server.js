@@ -39,6 +39,13 @@ app.use(morgan(':method :url'));
 // Connect to database
 const db = require('./models');
 
+// Adding seed data
+// const userData = require('./controllers/userSeedData.js')
+// db.User.insertMany(userData, (err, data) => {
+//   console.log("added user data");
+//   process.exit();
+// });
+
 // ------------------------------------------------------ Routes
 
 // Root route (landing page)
