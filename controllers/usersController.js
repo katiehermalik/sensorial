@@ -21,6 +21,18 @@ router.get('/:userId', (req, res) => {
     });
 });
 
+// GET edit
+router.get('/:userId/edit', (req, res) => {
+  db.User.findById(req.params.userId, (err, foundUser) => {
+    if (err) return console.log(err);
+    const context = {
+      user: foundUser,
+    };
+    res.render('users/edit', context);
+  });
+});
+
+
 // PUT update
 router.put('/:userId', (req, res) => {
   db.User.findByIdAndUpdate(req.params.userId, req.body, { new: true },
