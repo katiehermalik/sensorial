@@ -63,9 +63,22 @@ app.post('/', (req, res) => {
   });
 });
 
-// GET Current Prompt / Activities Index
+// GET Current Prompt
 app.get('/currentprompt', (req, res) => {
-  res.redirect('activities');
+  res.render('currentprompt');
+});
+
+// POST Show (Activity index page)
+app.post('/currentprompt', (req, res) => {
+  console.log(req.body);
+  db.User.findOneAndUpdate({username: req.body.username}, {isLoggedin: true}, 
+    {new: true}, (err, foundUser) => {
+    if (err) return console.log(err);
+    const context = {
+      user: foundUser,
+    }
+    res.render('currentprompt', context);
+  });
 });
 
 // GET Logout (updates current user 'isloggedin' to false)
