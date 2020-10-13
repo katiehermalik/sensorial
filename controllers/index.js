@@ -1,5 +1,6 @@
 module.exports = {
   users: require('./usersController'),
-  activities: require('./activitiesController')
+  activities: require('./activitiesController'),
+  prompts: require('./promptsController')
 };
 

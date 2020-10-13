@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-module.exports = [{
+module.exports = [
+    {
         title: 'Collage',
         promptInfo: {
             type: mongoose.Schema.Types.ObjectId,
@@ -11,7 +12,7 @@ module.exports = [{
         photo: 'https://unsplash.com/photos/xb0wLfZH9Zo'
     },
     {
-        title: 'space',
+        title: 'Space',
         promptInfo: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'promptSeedData'
@@ -24,4 +25,10 @@ module.exports = [{
         timestamp: (1412180887, 1)
     }
 ];
-  
+   
+// Added to DB:
+// insertedIds: {
+//     '0': 5f8516f67ed4802d62be1a84,
+//     '1': 5f8516f67ed4802d62be1a85,
+//     '2': 5f8516f67ed4802d62be1a86 
+ 

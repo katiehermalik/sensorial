@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>New Activity</h1>
-    <p><%= activities.promptInfo.name %></p>
+    <p><%= prompts.name %></p>
     <section class="NewActivityForm">
       <form action="/activities" method="POST">
         <div>
@@ -24,11 +24,12 @@
         </div>
         <div>
           <label for="photo">Photo</label>
-          <input type="image" name="photo" />
+          <input type="url" name="photo" />
         </div>
         <button type="submit">Add</button>
       </form>
     </section>
+    <%-include ('../partials/loggedInFooter')%>
   </body>
-</html>   
+</html>
   
