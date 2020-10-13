@@ -7,13 +7,10 @@
   <title><%= activities.title %></title>
 </head>
 <body>
+  <%-include ('../partials/loggedInLogo')%>
+  <%-include ('../partials/loggedInNav')%>
   <h1>Activities Journal</h1>
-  <% if (user === null) { %>
-    <%-include ('partials/loggedOutNav')%>
-  <% } else if (user.isLoggedin === true) { %>
-    <%-include ('partials/loggedInNav')%>
     <h2>Hello <%= user.username %></h2>
-  <% } %>
     <% activities.forEach((activities)=>{ %> 
       <li >
         <a href="/activities/<%= activities.id %>" >
@@ -22,6 +19,10 @@
         </li>
       <% }) %>
     </ul>
+    <form action="/activities/new" method="GET">
+      <input type="submit" value="New Activity" />
+    </form>
+    <%-include ('../partials/loggedInFooter')%>
 </body>
 </html>
 

@@ -25,7 +25,12 @@ router.get('/', (req, res) => {
 
 // GET New
 router.get('/new', (req, res) => {
-  res.render('activities/new');
+  const context = {
+    activities: activities,
+    prompts: prompts,
+    user: user,
+  };
+  res.render('activities/new', context);
 });
 
 // GET Show /:id

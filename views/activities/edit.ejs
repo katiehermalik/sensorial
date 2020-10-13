@@ -6,6 +6,7 @@
     <title>Edit Activity</title>
   </head>
   <body>
+    <%-include ('../partials/loggedInLogo')%>
     <%-include ('../partials/loggedInNav')%>
     <h1>Edit Activity</h1>
     <p><%= prompts.name %></p>
@@ -25,7 +26,7 @@
         </div>
         <div>
           <label for="photo">Photo</label>
-          <input type="image" name="photo" />
+          <input type="url" name="photo" />
         </div>
         <button type="submit">Edit Activity</button>
       </form>
@@ -33,6 +34,7 @@
         <input type="submit" value="Delete Activity"/>
     </form>
     </section>
+    <%-include ('../partials/loggedInFooter')%>
   </body>
 </html>
   

@@ -6,6 +6,7 @@
     <title>New Activity</title>
   </head>
   <body>
+    <%-include ('../partials/loggedInLogo')%> 
     <%-include ('../partials/loggedInNav')%>
     <h1>New Activity</h1>
     <p><%= prompts.name %></p>
@@ -25,11 +26,12 @@
         </div>
         <div>
           <label for="photo">Photo</label>
-          <input type="image" name="photo" />
+          <input type="url" name="photo" />
         </div>
         <button type="submit">Add</button>
       </form>
     </section>
+    <%-include ('../partials/loggedInFooter')%>
   </body>
-</html>   
+</html>
   
