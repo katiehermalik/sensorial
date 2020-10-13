@@ -9,8 +9,6 @@
   <title>Sensorial</title>
 </head>
 <body>
-  <%-include ('partials/loggedInLogo')%>
-  <%-include ('partials/loggedOutNav')%>
   <h1>Sensorial</h1>
   <div hidden class="sign-up-modal">
       <form action="/" method="POST">
@@ -26,7 +24,7 @@
       </form>
   </div>
   <div hidden class="login-modal">
-    <form action="/currentprompt" method="POST">
+    <form action="/currentprompt?_method=PUT" method="POST">
       <label for="username">Username</label>
       <input type="text" name="username">
       <label for="password">Password</label>
@@ -34,6 +32,5 @@
       <input type="submit" value="Login">
     </form>
   </div>
-  <%-include ('partials/loggedOutFooter')%>
 </body>
 </html>
