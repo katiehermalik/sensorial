@@ -9,8 +9,9 @@
   <title>Sensorial</title>
 </head>
 <body>
+  <%-include ('partials/loggedInLogo')%>
+  <%-include ('partials/loggedOutNav')%>
   <h1>Sensorial</h1>
-    <%-include ('partials/loggedOutNav')%>
   <div hidden class="sign-up-modal">
       <form action="/" method="POST">
         <label for="username">Username</label>
@@ -33,5 +34,6 @@
       <input type="submit" value="Login">
     </form>
   </div>
+  <%-include ('partials/loggedOutFooter')%>
 </body>
 </html>
