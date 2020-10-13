@@ -5,8 +5,8 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    promptInfo: 
-    {   type: mongoose.Schema.Types.ObjectId,
+    prompt: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Prompt',
     },
     note: {
@@ -18,9 +18,15 @@ const activitySchema = new mongoose.Schema({
         max: 600,
     },
     photo: String,
-}, {timestamp: true}); 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }
+}, {
+    timestamp: true
+});
 
 const Activity = mongoose.model('activities', activitySchema);
 
-module.exports = Activity; 
-   
+module.exports = Activity;
+  

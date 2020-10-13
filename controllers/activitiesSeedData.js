@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const activityArray = [
+module.exports = [
     {
         title: 'Collage',
         promptInfo: {
@@ -12,7 +12,7 @@ const activityArray = [
         photo: 'https://unsplash.com/photos/xb0wLfZH9Zo'
     },
     {
-        title: 'space',
+        title: 'Space',
         promptInfo: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'promptSeedData'
@@ -25,8 +25,7 @@ const activityArray = [
         timestamp: (1412180887, 1)
     }
 ];
-  
-module.exports = activityArray;
+   
 // Added to DB:
 // insertedIds: {
 //     '0': 5f8516f67ed4802d62be1a84,

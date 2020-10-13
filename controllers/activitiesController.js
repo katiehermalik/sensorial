@@ -16,8 +16,6 @@ router.get('/', (req, res) => {
 
     const context = {
       activities: allActivities,
-      prompts: prompts,
-      user: user,
     };
 
     res.render('activities/index', context)
@@ -25,20 +23,26 @@ router.get('/', (req, res) => {
 });
 // async try & catch // promises (once this executes, run this other thing)
 
+// GET New
+router.get('/new', (req, res) => {
+  res.render('activities/new');
+});
+
 // GET Show /:id
-router.get('/:id', (req, res) => {
+router.get('/:activityId', (req, res) => {
   db.Activity.findById(req.params.activityId)
   .populate('prompt')
   .exec((err, activityById)=>{
     if (err) return console.log(err);
 
-    res.render('activities/show', activityById);
-  })
-});
+    const context = {
+      activities: activityById,
+      prompts: prompts,
+      user: user,
+    };
 
-// GET New
-router.get('/new', (req, res) => {
-    res.render('activities/new');
+    res.render('activities/show', context);
+  })
 });
 
 // POST Create
@@ -101,11 +105,21 @@ router.delete('/:activityId', (req, res) => {
 // });
 
 // Add prompt array to DB
-// db.Prompt.collection.insertMany(activities, (err, promptArr)=>{
+// db.Prompt.collection.insertMany(prompts, (err, promptArr)=>{
 //   if (err){
 //       console.log(err);
 //   }else{
 //       console.log(promptArr);
+//   }
+//   process.exit();
+// });
+
+// Add user array to DB
+// db.User.collection.insertMany(user, (err, userArr)=>{
+//   if (err){
+//       console.log(err);
+//   }else{
+//       console.log(userArr);
 //   }
 //   process.exit();
 // });
