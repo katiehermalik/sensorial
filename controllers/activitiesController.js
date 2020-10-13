@@ -52,10 +52,14 @@ router.get('/:activityId', (req, res) => {
 
 // POST Create
 router.post('/', (req, res) => {
+  foundUser = res.locals.user;
   db.Activity.create(req.body, (err, newActivity) => {
     if (err) return console.log(err);
-
-    res.redirect(`/activities/${newActivity.id}`);
+    foundUser.activities.push(newActivity._id);
+    foundUser.save((err, savedUser) => {
+      if (err) return console.log(err);
+      res.redirect(`/activities/${newActivity.id}`);
+    });
   });
 });
 
@@ -92,12 +96,12 @@ router.put('/:activityId', (req, res) => {
 // DELETE destroy /:id
 router.delete('/:activityId/edit', (req, res) => {
   const activityId = req.params.activityId
+  console.log(activityId)
   db.Activity.findbyIdAndDelete(activityId, (err) => {
     if (err) return console.log(err);
-
     res.redirect('/activities')
-  })
-})
+  });
+});
 
 // Add activity array to DB
 // db.Activity.collection.insertMany(activities, (err, actArr)=>{
