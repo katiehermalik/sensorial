@@ -6,8 +6,6 @@
   <title>Profile</title>
 </head>
 <body>
-  <%-include ('../partials/loggedInLogo')%>
-  <%-include ('../partials/loggedInNav')%>
   <h1>Edit Profile</h1>
   <form action="/users/<%=user._id%>?_method=PUT" method="POST">
     <label for="username">Username</label>
@@ -20,6 +18,5 @@
     <input type="text" name="picture" value="<%=user.picture%>">
     <input type="submit" value="Update Profile">
   </form>
-  <%-include ('../partials/loggedInFooter')%>
 </body>
 </html>

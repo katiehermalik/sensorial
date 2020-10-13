@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <% if (user === null) { %>
+    <%-include ('partials/loggedOutLogo')%>
+  <% } else if (user.isLoggedin === true) { %>
+    <%-include ('partials/loggedInLogo')%>
+  <% } %>
+  <% if (user === null) { %>
+    <%-include ('partials/loggedOutNav')%>
+  <% } else if (user.isLoggedin === true) { %>
+    <%-include ('partials/loggedInNav')%>
+  <% } %>
+
+
+  <%- body %>
+
+
+  <% if (user === null) { %>
+    <%-include ('partials/loggedOutFooter')%>
+  <% } else if (user.isLoggedin === true) { %>
+    <%-include ('partials/loggedInFooter')%>
+  <% } %>
+</body>
+</html>
