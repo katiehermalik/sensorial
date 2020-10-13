@@ -6,17 +6,6 @@
   <title>Contact Sensorial</title>
 </head>
 <body>
-  <% if (user === null) { %>
-    <%-include ('partials/loggedOutLogo')%>
-  <% } else if (user.isLoggedin === true) { %>
-    <%-include ('partials/loggedInLogo')%>
-  <% } %>
-  <% if (user === null) { %>
-    <%-include ('partials/loggedOutNav')%>
-  <% } else if (user.isLoggedin === true) { %>
-    <%-include ('partials/loggedInNav')%>
-    <h2>Hello <%= user.username %></h2>
-  <% } %>
   <h1>Contact Us</h1>
   <form action="" method="" id="contact">
     <label for="name">Name</label>

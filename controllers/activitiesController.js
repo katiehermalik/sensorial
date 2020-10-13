@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../models');
 const activities = require('./activitiesSeedData');
 const prompts = require('./promptSeedData');
-const user = require('./userSeedData')
+const user = require('./userSeedData');
 
 // Current path '/activities'
 
@@ -15,13 +15,15 @@ router.get('/', (req, res) => {
     if (err) return console.log(err);
 
     const context = {
-      activities: allActivities,
+      allActivities: allActivities,
+      activities: activities,
+      prompts: prompts,
+      user: user,
     };
 
     res.render('activities/index', context)
   })
 });
-// async try & catch // promises (once this executes, run this other thing)
 
 // GET New
 router.get('/new', (req, res) => {
@@ -52,10 +54,14 @@ router.get('/:activityId', (req, res) => {
 
 // POST Create
 router.post('/', (req, res) => {
+  foundUser = res.locals.user;
   db.Activity.create(req.body, (err, newActivity) => {
     if (err) return console.log(err);
-
-    res.redirect(`/activities/${newActivity.id}`);
+    foundUser.activities.push(newActivity._id);
+    foundUser.save((err, savedUser) => {
+      if (err) return console.log(err);
+      res.redirect(`/activities/${newActivity.id}`);
+    });
   });
 });
 
@@ -89,13 +95,20 @@ router.put('/:activityId', (req, res) => {
 });
 
 // DELETE destroy /:id
-router.delete('/:activityId/edit', (req, res) => {
-  db.Activity.findByIdAndDelete(req.params.activityId, (err, deletedActivity) => {
+router.delete('/:activityId', (req, res) => {
+  const activityId = req.params.activityId;
+  db.Activity.findByIdAndDelete(activityId, (err, deletedActivity) => {
     if (err) return console.log(err);
-
-    console.log(deletedActivity)
-    res.redirect('/activities')
-  })
+    const foundUser = res.locals.user;
+      foundUser.activities.remove(activityId)
+      foundUser.save((err, deletedActivtiy)=>{
+        if (err) return console.log(err);
+        res.redirect('/activities')
+        return console.log(deletedActivity)
+        
+      })
+      console.log(deletedActivity)
+    })
 });
 
 module.exports = router;

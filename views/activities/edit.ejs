@@ -8,21 +8,20 @@
   <body>
     <%-include ('../partials/loggedInLogo')%>
     <%-include ('../partials/loggedInNav')%>
-    <h1>Edit or Delete Activity</h1>
-    <p><%= prompts.name %></p>
+    <h1>Edit Activity</h1>
     <section class="editActivityForm">
       <form action="/activities/<%= activities._id %>?_method=PUT" method="POST">
         <div>
           <label for="title">Title</label>
-          <input type="text" name="title" />
+          <input type="text" name="title" value="<%=activities.title%>" />
         </div>
         <div>
           <label for="note">Note</label>
-          <input type="text" name="note" />
+          <input type="text" name="note" value="<%=activities.note%>" />
         </div>
         <div>
           <label for="experienceDesc">Experience Description</label>
-          <input type="text" name="experienceDesc" />
+          <input type="text" name="experienceDesc" value="<%=activities.experienceDesc%>"/>
         </div>
         <div>
           <label for="photo">Photo</label>
@@ -30,9 +29,6 @@
         </div>
         <button type="submit">Edit Activity</button>
       </form>
-      <form action="/activities/<%= activities.id %>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete Activity"/>
-    </form>
     </section>
     <%-include ('../partials/loggedInFooter')%>
   </body>
