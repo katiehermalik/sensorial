@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Activity <%= activityId %></title>
+    <title>Activity <%= activity.title %></title>
   </head>
   <body>
-    <h1><%= activities.title %></h1>
-    <p><%= prompts.name %></p>
-    <p><%= activities.note %></p>
-    <p><%= activities.experienceDesc %></p>
-    <p><%= activities.photo %></p>
+    <h1><%= activity.title %></h1>
+    <p><%= prompt.name %></p>
+    <p><%= activity.note %></p>
+    <p><%= activity.experienceDesc %></p>
+    <p><%= activity.photo %></p>
+    <form action="/activities/<%= activity.id %>/edit" method="GET">
+    <input type="submit" value="Edit Activity">
+    </form>
   </body>
 </html>
   

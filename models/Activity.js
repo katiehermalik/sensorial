@@ -7,7 +7,7 @@ const activitySchema = new mongoose.Schema({
     },
     promptInfo: 
     {   type: mongoose.Schema.Types.ObjectId,
-        ref: './Prompt',
+        ref: 'Prompt',
     },
     note: {
         type: String,

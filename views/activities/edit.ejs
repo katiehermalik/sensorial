@@ -8,9 +8,9 @@
   <body>
     <%-include ('../partials/loggedInNav')%>
     <h1>Edit Activity</h1>
-    <p><%= prompt.name %></p>
+    <p><%= prompts.name %></p>
     <section class="editActivityForm">
-      <form action="/activities/<%= activity._id %>?_method=PUT" method="POST">
+      <form action="/activities/<%= activities._id %>?_method=PUT" method="POST">
         <div>
           <label for="title">Title</label>
           <input type="text" name="title" />
@@ -27,8 +27,11 @@
           <label for="photo">Photo</label>
           <input type="image" name="photo" />
         </div>
-        <button type="submit">Edit</button>
+        <button type="submit">Edit Activity</button>
       </form>
+      <form action="/activities/<%= activities._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Activity"/>
+    </form>
     </section>
   </body>
 </html>

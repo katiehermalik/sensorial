@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prompt</title>
+  <title><%= activities.title %></title>
 </head>
 <body>
-  <h1>Prompt</h1>
+  <h1>Activities Journal</h1>
   <% if (user === null) { %>
     <%-include ('partials/loggedOutNav')%>
   <% } else if (user.isLoggedin === true) { %>
     <%-include ('partials/loggedInNav')%>
     <h2>Hello <%= user.username %></h2>
   <% } %>
-    <% for (let i =0; i<activities.length; i++){ %> 
+    <% activities.forEach((activities)=>{ %> 
       <li >
-        <a href="/activities/<%= activities[i]._id %>" >
-          <%= activities[i].title %>
+        <a href="/activities/<%= activities.id %>" >
+          <%= activities.title %>
         </a>
         </li>
-      <% } %>
+      <% }) %>
     </ul>
 </body>
 </html>

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-module.exports = [{
+const activityArray = [
+    {
         title: 'Collage',
         promptInfo: {
             type: mongoose.Schema.Types.ObjectId,
@@ -25,3 +26,10 @@ module.exports = [{
     }
 ];
   
+module.exports = activityArray;
+// Added to DB:
+// insertedIds: {
+//     '0': 5f8516f67ed4802d62be1a84,
+//     '1': 5f8516f67ed4802d62be1a85,
+//     '2': 5f8516f67ed4802d62be1a86 
+ 
