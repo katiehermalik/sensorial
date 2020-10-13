@@ -18,8 +18,8 @@ app.set('view engine', 'ejs');
 const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
-// granting views access too that user's document.
-app.use((req, res, next) => {
+// granting views access too that user's document.// utilize passport for authentication? 
+app.use('*', (req, res, next) => {
   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
     if (err) return console.log(err);
     res.locals.user = foundUser;

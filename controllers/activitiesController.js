@@ -3,67 +3,130 @@ const router = express.Router();
 
 // Database connection
 const db = require('../models');
-const activities = require('./activitiesSeedData')
+const activities = require('./activitiesSeedData');
+const prompts = require('./promptSeedData');
+const user = require('./userSeedData')
 
 // Current path '/activities'
 
-// GET Index
+// GET Index /
 router.get('/', (req, res) => {
-  res.render('activities/index', {
+  db.Activity.find({}, (err, allActivities) => {
+    if (err) return console.log(err);
+
+    const context = {
+      activities: allActivities,
+    };
+
+    res.render('activities/index', context)
+  })
+});
+// async try & catch // promises (once this executes, run this other thing)
+
+// GET New
+router.get('/new', (req, res) => {
+  const context = {
     activities: activities,
-  });
+    prompts: prompts,
+    user: user,
+  };
+  res.render('activities/new', context);
 });
 
 // GET Show /:id
-router.get('/:id', (req, res)=>{
-  const activityId = req.params.id;
-  const activity = activities[activityId]
-  if (activity){
-    res.render('activities/show', {
-      activities: activities,
-    })
-  }else{
-    res.redirect('/activities', {
-      activities: {message: 'activity does not exist.'},
-    })
-  };
-  
-});
-
-// GET New
-router.get('/new', (req, res)=>{
-  db.activities.find({}, (err, allActivities)=>{
+router.get('/:activityId', (req, res) => {
+  db.Activity.findById(req.params.activityId)
+  .populate('prompt')
+  .exec((err, activityById)=>{
     if (err) return console.log(err);
 
-    const context = {allActivities};
+    const context = {
+      activities: activityById,
+      prompts: prompts,
+      user: user,
+    };
 
-    res.render('activities/new', context);
-  });
+    res.render('activities/show', context);
+  })
 });
 
 // POST Create
-router.post('/', (req, res)=>{
-  db.Activity.create(req.body, (err, newActivity)=>{
+router.post('/', (req, res) => {
+  db.Activity.create(req.body, (err, newActivity) => {
     if (err) return console.log(err);
-    
-    activities.push(newActivity._id);
 
-    res.redirect(`/activities/${newActivity._id}`);
+    res.redirect(`/activities/${newActivity.id}`);
   });
 });
 
 // GET Edit /:id/edit
-router.get('/:activityId/edit', (req, res)=>{
-  db.Activity.findById(req.params.activityId, (err, foundActivity)=>{
-    if (err){
+router.get('/:activityId/edit', (req, res) => {
+  db.Activity.findById(req.params.activityId, (err, foundActivity) => {
+    if (err) {
       console.log(err);
     }
-    res.render('activities/edit')
+    const context = {
+      activities: foundActivity,
+      prompts: prompts,
+      user: user,
+    }
+    res.render('activities/edit', context)
+  });
+});
+
+// PATCH/PUT Update /:id
+router.put('/:activityId', (req, res) => {
+  db.Activity.findByIdAndUpdate(
+    req.params.activityId,
+    req.body, {
+      new: true
+    },
+    (err, updatedActivity) => {
+      if (err) return console.log(err);
+
+      res.redirect(`/activities/${updatedActivity.id}`);
+    }
+  );
+});
+
+// DELETE destroy /:id
+router.delete('/:activityId/edit', (req, res) => {
+  const activityId = req.params.activityId
+  db.Activity.findbyIdAndDelete(activityId, (err) => {
+    if (err) return console.log(err);
+
+    res.redirect('/activities')
   })
 })
 
-// PATCH/PUT Update /:id
+// Add activity array to DB
+// db.Activity.collection.insertMany(activities, (err, actArr)=>{
+//     if (err){
+//         console.log(err);
+//     }else{
+//         console.log(actArr);
+//     }
+//     process.exit();
+// });
 
-// DELETE destroy /:id
+// Add prompt array to DB
+// db.Prompt.collection.insertMany(prompts, (err, promptArr)=>{
+//   if (err){
+//       console.log(err);
+//   }else{
+//       console.log(promptArr);
+//   }
+//   process.exit();
+// });
+
+// Add user array to DB
+// db.User.collection.insertMany(user, (err, userArr)=>{
+//   if (err){
+//       console.log(err);
+//   }else{
+//       console.log(userArr);
+//   }
+//   process.exit();
+// });
 
 module.exports = router;

@@ -4,12 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prompt </title>
+  <title><%= activities.title %></title>
 </head>
 <body>
+  <%-include ('../partials/loggedInLogo')%>
   <%-include ('../partials/loggedInNav')%>
-  <h1>Prompt</h1>
-  <!--<h2>Hello <%=user.username%></h2>--->
+  <h1>Activities Journal</h1>
+    <h2>Hello <%= user.username %></h2>
+    <% activities.forEach((activities)=>{ %> 
+      <li >
+        <a href="/activities/<%= activities.id %>" >
+          <%= activities.title %>
+        </a>
+        </li>
+      <% }) %>
+    </ul>
+    <form action="/activities/new" method="GET">
+      <input type="submit" value="New Activity" />
+    </form>
+    <%-include ('../partials/loggedInFooter')%>
 </body>
 </html>
 

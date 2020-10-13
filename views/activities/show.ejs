@@ -3,14 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Activity <%= activityId %></title>
+    <title>Activity <%= activities.title %></title>
   </head>
+
   <body>
+    <%-include ('../partials/loggedInLogo')%> 
+    <%-include ('../partials/loggedInNav')%>
     <h1><%= activities.title %></h1>
-    <p><%= activities.promptInfo.name %></p>
+    <p><%= prompts.name %></p>
     <p><%= activities.note %></p>
     <p><%= activities.experienceDesc %></p>
-    <p><%= activities.photo %></p>
+    <img src="<%= activities.photo %>" alt="photo of <%= prompts.name %>"/>
+    <form action="/activities/<%= activities.id %>/edit" method="GET">
+      <input type="submit" value="Edit or Delete" />
+    </form>
+    <%-include ('../partials/loggedInFooter')%>
   </body>
 </html>
   

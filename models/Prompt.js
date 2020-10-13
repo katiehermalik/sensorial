@@ -6,7 +6,11 @@ const promptSchema = new mongoose.Schema ({
     instructions: String,
     experienceGoals: String,
     vocabulary: String,
-})
+    activities: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Activity'
+      }]
+});
 
 const Prompt = (mongoose.model('Prompt', promptSchema));
 
