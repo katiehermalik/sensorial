@@ -62,10 +62,9 @@ router.post('/', (req, res) => {
 // GET Edit /:id/edit
 router.get('/:activityId/edit', (req, res) => {
   db.Activity.findById(req.params.activityId, (err, foundActivity) => {
-    if (err) {
-      console.log(err);
-    }
-    const context = {
+    if (err) console.log(err);
+
+      const context = {
       activities: foundActivity,
       prompts: prompts,
       user: user,
@@ -91,42 +90,12 @@ router.put('/:activityId', (req, res) => {
 
 // DELETE destroy /:id
 router.delete('/:activityId/edit', (req, res) => {
-  const activityId = req.params.activityId
-  db.Activity.findbyIdAndDelete(activityId, (err) => {
+  db.Activity.findByIdAndDelete(req.params.activityId, (err, deletedActivity) => {
     if (err) return console.log(err);
 
+    console.log(deletedActivity)
     res.redirect('/activities')
   })
-})
-
-// Add activity array to DB
-// db.Activity.collection.insertMany(activities, (err, actArr)=>{
-//     if (err){
-//         console.log(err);
-//     }else{
-//         console.log(actArr);
-//     }
-//     process.exit();
-// });
-
-// Add prompt array to DB
-// db.Prompt.collection.insertMany(prompts, (err, promptArr)=>{
-//   if (err){
-//       console.log(err);
-//   }else{
-//       console.log(promptArr);
-//   }
-//   process.exit();
-// });
-
-// Add user array to DB
-// db.User.collection.insertMany(user, (err, userArr)=>{
-//   if (err){
-//       console.log(err);
-//   }else{
-//       console.log(userArr);
-//   }
-//   process.exit();
-// });
+});
 
 module.exports = router;

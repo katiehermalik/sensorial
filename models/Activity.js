@@ -13,17 +13,14 @@ const activitySchema = new mongoose.Schema({
         type: String,
         max: 20,
     },
-    experienceDesc: {
-        type: String,
-        max: 600,
-    },
+    experienceDesc: String,
     photo: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }
 }, {
-    timestamp: true
+    timestamps: true
 });
 
 const Activity = mongoose.model('activities', activitySchema);

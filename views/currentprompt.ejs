@@ -10,7 +10,9 @@
   <%-include ('./partials/loggedInNav')%>
   <h1>Prompt</h1>
   <h2>Hello <%=user.username%></h2>
-  <button>My Activities Journal</button>
+  <form action="/activities" method="GET">
+    <input type="submit" value="My Activities Journal" />
+  </form>
   <%-include ('./partials/loggedInFooter')%>
 </body>
 </html>
