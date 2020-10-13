@@ -6,6 +6,8 @@
     <title>New Activity</title>
   </head>
   <body>
+    <%-include ('../partials/loggedInLogo')%>
+    <%-include ('../partials/loggedInNav')%>
     <h1>New Activity</h1>
     <p><%= prompts.name %></p>
     <section class="NewActivityForm">
@@ -19,8 +21,8 @@
           <input type="text" name="note" />
         </div>
         <div>
-          <label for="experienceDescription">Experience Description</label>
-          <input type="text" name="experienceDescription" />
+          <label for="experienceDesc">Experience Description</label>
+          <input type="text" name="experienceDesc" />
         </div>
         <div>
           <label for="photo">Photo</label>
