@@ -90,7 +90,7 @@ router.put('/:activityId', (req, res) => {
 });
 
 // DELETE destroy /:id
-router.delete('/:activityId', (req, res) => {
+router.delete('/:activityId/edit', (req, res) => {
   const activityId = req.params.activityId
   db.Activity.findbyIdAndDelete(activityId, (err) => {
     if (err) return console.log(err);

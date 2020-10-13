@@ -8,7 +8,7 @@
   <body>
     <%-include ('../partials/loggedInLogo')%>
     <%-include ('../partials/loggedInNav')%>
-    <h1>Edit Activity</h1>
+    <h1>Edit or Delete Activity</h1>
     <p><%= prompts.name %></p>
     <section class="editActivityForm">
       <form action="/activities/<%= activities._id %>?_method=PUT" method="POST">

@@ -15,7 +15,7 @@
     <p><%= activities.experienceDesc %></p>
     <img src="<%= activities.photo %>" alt="photo of <%= prompts.name %>"/>
     <form action="/activities/<%= activities.id %>/edit" method="GET">
-      <input type="submit" value="Edit Activity" />
+      <input type="submit" value="Edit or Delete" />
     </form>
     <%-include ('../partials/loggedInFooter')%>
   </body>
