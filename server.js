@@ -20,7 +20,7 @@ app.use(ejsLayouts);
 const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
-// granting views access too that user's document.// utilize passport for authentication? 
+// granting views access too that user's document.
 app.use('*', (req, res, next) => {
   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
     if (err) return console.log(err);
@@ -31,7 +31,7 @@ app.use('*', (req, res, next) => {
 
 
 // Middleware
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
