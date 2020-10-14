@@ -94,58 +94,20 @@ router.put('/:activityId', (req, res) => {
 });
 
 // DELETE destroy /:id
-router.delete('/:activityId/edit', (req, res) => {
-  const activityId = req.params.activityId
-  console.log(activityId)
-  db.Activity.findbyIdAndDelete(activityId, (err) => {
+router.delete('/:activityId', (req, res) => {
+  const activityId = req.params.activityId;
+  db.Activity.findByIdAndDelete(activityId, (err, deletedActivity) => {
     if (err) return console.log(err);
-    res.redirect('/activities')
-  });
-});
-
-router.delete('/:activityId/edit', (req, res) => {
-  db.Activity.findByIdAndDelete(req.params.activityId, (err, deletedActivity) => {
-    if (err) return console.log(err);
-      db.User.findOne({'activities': activityId}, (err, foundUser)=>{
-      if (err) return console.log(err);
+    const foundUser = res.locals.user;
       foundUser.activities.remove(activityId)
-      foundUser.save((err)=>{
+      foundUser.save((err, deletedActivtiy)=>{
         if (err) return console.log(err);
         res.redirect('/activities')
+        return console.log(deletedActivity)
+        
       })
+      console.log(deletedActivity)
     })
-    console.log(deletedActivity)
-  })
 });
-
-// Add activity array to DB
-// db.Activity.collection.insertMany(activities, (err, actArr)=>{
-//     if (err){
-//         console.log(err);
-//     }else{
-//         console.log(actArr);
-//     }
-//     process.exit();
-// });
-
-// Add prompt array to DB
-// db.Prompt.collection.insertMany(prompts, (err, promptArr)=>{
-//   if (err){
-//       console.log(err);
-//   }else{
-//       console.log(promptArr);
-//   }
-//   process.exit();
-// });
-
-// Add user array to DB
-// db.User.collection.insertMany(user, (err, userArr)=>{
-//   if (err){
-//       console.log(err);
-//   }else{
-//       console.log(userArr);
-//   }
-//   process.exit();
-// });
 
 module.exports = router;
