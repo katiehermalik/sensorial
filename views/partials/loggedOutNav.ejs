@@ -1,50 +1,67 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/about">About</a> |
-      <a href="/contact">Contact</a> |
-      <a id="sign-up" href="#!" class="btn" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a> |
-      <a id="login" href="#!" class="btn" data-toggle="modal" data-target="#login-modal">Login</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-<!-- Sign up Modal -->
-<div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="sign-up-modal">
-          <form id="sign-up-form" action="/" method="POST">
-            <label for="username">Username</label>
-            <input type="text" name="username">
-            <label for="email">Email</label>
-            <input type="text" name="email">
-            <label for="password">Password</label>
-            <input type="text" name="password">
-            <label for="picture">Profile Picture</label>
-            <input type="text" name="picture">
-          </form>
+
+<body>
+  <div class="container pt">
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link color-1" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link color-1" href="/contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a id="sign-up" href="#!" class="nav-link color-1" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a id="login" href="#!" class="nav-link color-1" data-toggle="modal" data-target="#login-modal">Login</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Sign up Modal -->
+  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <input form="sign-up-form" type="submit" value="Save" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+        <div class="modal-body">
+          <div class="sign-up-modal">
+            <form id="sign-up-form" action="/" method="POST">
+              <div class="form-group">
+                <input type="text" name="username" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <input type="text" name="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input type="text" name="password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <input type="text" name="picture" placeholder="Profile Picture">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input form="sign-up-form" type="submit" value="Save" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+        </div>
       </div>
     </div>
   </div>
-</div>
  
   <!-- Login Modal -->
- <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -56,10 +73,12 @@
         <div class="modal-body">
           <div class="login-modal">
             <form id="login-form" action="/currentprompt?_method=PUT" method="POST">
-              <label for="username">Username</label>
-              <input type="text" name="username">
-              <label for="password">Password</label>
-              <input type="text" name="password">
+              <div class="form-group">
+                <input type="text" name="username" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <input type="text" name="password" placeholder="Password">
+              </div>
             </form>
           </div>
         </div>
@@ -69,7 +88,6 @@
       </div>
     </div>
   </div>
-    </nav>
-  </body>
-  </html> 
+</body>
+</html> 
 

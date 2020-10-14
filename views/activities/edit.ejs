@@ -6,8 +6,6 @@
     <title>Edit Activity</title>
   </head>
   <body>
-    <%-include ('../partials/loggedInLogo')%>
-    <%-include ('../partials/loggedInNav')%>
     <h1>Edit Activity</h1>
     <section class="editActivityForm">
       <form action="/activities/<%= activities._id %>?_method=PUT" method="POST">
@@ -30,7 +28,6 @@
         <button type="submit">Edit Activity</button>
       </form>
     </section>
-    <%-include ('../partials/loggedInFooter')%>
   </body>
 </html>
   

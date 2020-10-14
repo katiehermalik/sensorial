@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activity <%= activities.title %></title>
   </head>
-
   <body>
-    <%-include ('../partials/loggedInLogo')%>
-    <%-include ('../partials/loggedInNav')%>
     <h1><%= activities.title %></h1>
     <p><%= prompts.name %></p>
     <p><%= activities.note %></p>
@@ -20,7 +17,6 @@
     <form action="/activities/<%= activities.id %>?_method=DELETE" method="POST">
       <input type="submit" value="Delete Activity"/>
   </form>
-    <%-include ('../partials/loggedInFooter')%>
   </body>
 </html>
   
