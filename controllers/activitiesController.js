@@ -15,13 +15,15 @@ router.get('/', (req, res) => {
     if (err) return console.log(err);
 
     const context = {
-      activities: allActivities,
+      allActivities: allActivities,
+      activities: activities,
+      prompts: prompts,
+      user: user,
     };
 
     res.render('activities/index', context)
   })
 });
-// async try & catch // promises (once this executes, run this other thing)
 
 // GET New
 router.get('/new', (req, res) => {
