@@ -6,8 +6,32 @@
   <title>Prompt</title>
 </head>
 <body>
-  <h1>Prompt</h1>
-  <h2>Hello <%=user.username%></h2>
-  <button>My Activities Journal</button>
+  <h1>Current Prompt</h1>
+  <h6>Hello <%=user.username%></h6>
+  <h3>Paper Towel Watercolors</h3>
+  <p class="materials"><strong>Materials required:</strong>
+    <ul id="materials">
+      <li>paper towels</li>
+      <li>liquid watercolors</li>
+      <li>small cups or jars</li>
+      <li>pipettes</li>
+      <li>newspaper/plastic sheeting (for protecting your workspace)</li>
+      <li>clothesline or wire hangers (for drying)</li>
+    </ul>
+  </p>
+  <p class="instructions"><strong>Instructions:</strong>
+    <div>Set up the area by covering the table if you're going to, filling the small cups or jars with the liquid watercolors, and placing a pipette in each one. Depending on your child's age, they may need some help with the pipettes, but you can lie a paper towel down flat and let them start squeezing pipettes of different colors onto the towel however they choose. Many children like to get every white spot, but that's certainly not required. Once the paper towel is saturated to your child's satisfaction, you can fold it in half over the clothesline or hanger outside until it dries. Once dry you can turn these into other crafts (like snowflakes so you can practice cutting skills) or keep them the way they are.</div>
+  </p>
+  <p class="experienceGoals"><strong>Experience Goals:</strong>
+  <div>This activity encourages fine motor skills, color exploration, and children can expand on this open ended activity.</div></p>
+  <p class="vocabulary"><strong>Vocabulary:</strong>
+    <div>squeeze, wet, dry, fold</div>
+  </p>
+  <form action="/activities/new" method="GET">
+    <input type="submit" value="Create New Activity" />
+  </form>
+  <form action="/activities" method="GET">
+    <input type="submit" value="My Activities Journal" />
+  </form>
 </body>
 </html>

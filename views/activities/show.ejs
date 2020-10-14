@@ -17,6 +17,9 @@
     <form action="/activities/<%= activities.id %>/edit" method="GET">
       <input type="submit" value="Edit or Delete" />
     </form>
+    <form action="/activities/<%= activities.id %>?_method=DELETE" method="POST">
+      <input type="submit" value="Delete Activity"/>
+  </form>
     <%-include ('../partials/loggedInFooter')%>
   </body>
 </html>
