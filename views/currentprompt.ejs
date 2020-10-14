@@ -6,9 +6,11 @@
   <title>Prompt</title>
 </head>
 <body>
+  <%-include ('./partials/loggedInLogo')%>
+  <%-include ('./partials/loggedInNav')%>
   <h1>Current Prompt</h1>
-  <h6>Hello <%=user.username%></h6>
-  <h3>Paper Towel Watercolors</h3>
+  <h3>Hello <%=user.username%></h3>
+  <h4>Paper Towel Watercolors</h4>
   <p class="materials"><strong>Materials required:</strong>
     <ul id="materials">
       <li>paper towels</li>
@@ -33,5 +35,6 @@
   <form action="/activities" method="GET">
     <input type="submit" value="My Activities Journal" />
   </form>
+  <%-include ('./partials/loggedInFooter')%>
 </body>
 </html>
