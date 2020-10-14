@@ -68,10 +68,9 @@ router.post('/', (req, res) => {
 // GET Edit /:id/edit
 router.get('/:activityId/edit', (req, res) => {
   db.Activity.findById(req.params.activityId, (err, foundActivity) => {
-    if (err) {
-      console.log(err);
-    }
-    const context = {
+    if (err) console.log(err);
+
+      const context = {
       activities: foundActivity,
       prompts: prompts,
       user: user,
