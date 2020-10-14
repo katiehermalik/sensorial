@@ -1,8 +1,17 @@
+* {
+  font-family: 'Mulish', sans-serif !important;
+}
+
 body {
-  background-color: rgb(240, 240, 240);
+  background-image: url('/images/Background.jpeg');
+  background-size: 100%;
 }
 
 #profile-pic {
   height: 200px;
   border-radius: 50%;
+}
+
+#logo {
+  width: 300px;
 }
