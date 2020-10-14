@@ -103,6 +103,21 @@ router.delete('/:activityId/edit', (req, res) => {
   });
 });
 
+router.delete('/:activityId/edit', (req, res) => {
+  db.Activity.findByIdAndDelete(req.params.activityId, (err, deletedActivity) => {
+    if (err) return console.log(err);
+      db.User.findOne({'activities': activityId}, (err, foundUser)=>{
+      if (err) return console.log(err);
+      foundUser.activities.remove(activityId)
+      foundUser.save((err)=>{
+        if (err) return console.log(err);
+        res.redirect('/activities')
+      })
+    })
+    console.log(deletedActivity)
+  })
+});
+
 // Add activity array to DB
 // db.Activity.collection.insertMany(activities, (err, actArr)=>{
 //     if (err){
