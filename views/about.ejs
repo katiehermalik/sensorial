@@ -6,21 +6,7 @@
   <title>About Sensorial</title>
 </head>
 <body>
-  <% if (user === null) { %>
-    <%-include ('partials/loggedOutLogo')%>
-  <% } else if (user.isLoggedin === true) { %>
-    <%-include ('partials/loggedInLogo')%>
-  <% } %>
-  <% if (user === null) { %>
-    <%-include ('partials/loggedOutNav')%>
-  <% } else if (user.isLoggedin === true) { %>
-    <%-include ('partials/loggedInNav')%>
-  <% } %>
   <h1>About Sensorial</h1>
-  <% if (user === null) { %>
-    <%-include ('partials/loggedOutFooter')%>
-  <% } else if (user.isLoggedin === true) { %>
-    <%-include ('partials/loggedInFooter')%>
-  <% } %>
+  <p>Sensorial was created through a collaboration of educators and parents for educators and parents with a focus on process-based art for preschool aged children. While process-based art is intended to be fairly free-form and open ended, sometimes both parents and educators need a seed of inspiration to get started! We provide prompts on a weekly basis to use as a baseline and then our members can use their imaginations from there. Members can upload as many activities to their journal as they like, whether or not it's inspired by a prompt.</p>
 </body>
 </html>

@@ -6,16 +6,8 @@
   <title>User Profile</title>
 </head>
 <body>
-<<<<<<< HEAD
-  <%-include ('../partials/loggedInNav')%>
-  <h1>User Profile</h1>
-  <img src="<%= user.picture %> " alt="">
-=======
-  <%-include ('../partials/loggedInLogo')%>
-  <%-include ('../partials/loggedInNav')%>
   <h1>User Profile</h1>
   <img id="profile-pic" src="<%= user.picture %>" alt="">
->>>>>>> 8aa0b3405bcfc6291c5e2710cf8d4b57893faea8
   <h2><%=user.username%></h2>
   <h2><%=user.email%></h2>
   <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
@@ -24,9 +16,5 @@
   <form action="/users/<%=user._id%>/edit" method="GET">
     <input type="submit" value="Update">
   </form>
-<<<<<<< HEAD
-=======
-  <%-include ('../partials/loggedInFooter')%>
->>>>>>> 8aa0b3405bcfc6291c5e2710cf8d4b57893faea8
 </body>
 </html>

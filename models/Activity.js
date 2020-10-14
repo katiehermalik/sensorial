@@ -5,22 +5,25 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    promptInfo: 
-    {   type: mongoose.Schema.Types.ObjectId,
-        ref: './Prompt',
+    prompt: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Prompt',
     },
     note: {
         type: String,
         max: 20,
     },
-    experienceDesc: {
-        type: String,
-        max: 600,
-    },
+    experienceDesc: String,
     photo: String,
-}, {timestamp: true}); 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }
+}, {
+    timestamps: true
+});
 
 const Activity = mongoose.model('activities', activitySchema);
 
-module.exports = Activity; 
-   
+module.exports = Activity;
+  

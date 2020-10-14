@@ -7,19 +7,21 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const ejsLayouts = require('express-ejs-layouts')
 
 require('dotenv').config();
 const PORT = process.env.PORT || 4000;
 
 // set view engine
 app.set('view engine', 'ejs');
+app.use(ejsLayouts);
 
 // CONTROLLERS
 const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
 // granting views access too that user's document.
-app.use('/', (req, res, next) => {
+app.use('*', (req, res, next) => {
   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
     if (err) return console.log(err);
     res.locals.user = foundUser;
@@ -29,7 +31,7 @@ app.use('/', (req, res, next) => {
 
 
 // Middleware
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
