@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../models');
 const activities = require('./activitiesSeedData');
 const prompts = require('./promptSeedData');
-const user = require('./userSeedData')
+const user = require('./userSeedData');
 
 // Current path '/activities'
 

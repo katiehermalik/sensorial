@@ -1,14 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= activities.title %></title>
+  <title>Activities Journal</title>
 </head>
 <body>
-  <h1>Prompt</h1>
+  <h1>Activities Journal</h1>
   <h2>Hello <%=user.username%></h2>
+  <ul>
+  <% allActivities.forEach((activities)=> { %>
+    <li>
+     <a href="/activities/<%= activities._id %>">
+      <h4><%= activities.title %></h4>
+    </a> 
+    </li>
+  <% }) %>
+</ul>
 </body>
 </html>
 
