@@ -8,7 +8,6 @@ const db = require('../models');
 // Current Path = '/users'
 
 
-
 // Get show
 router.get('/:userId', (req, res) => {
   db.User.findById((req.params.userId),

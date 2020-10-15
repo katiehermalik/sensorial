@@ -3,11 +3,13 @@
 const express = require('express');
 const app = express();
 
+
 // 3rd party modules
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
-const ejsLayouts = require('express-ejs-layouts')
+const ejsLayouts = require('express-ejs-layouts');
+const multer  = require('multer')
 
 require('dotenv').config();
 const PORT = process.env.PORT || 4000;
@@ -28,16 +30,6 @@ app.use('*', (req, res, next) => {
     next();
   });
 });
-
-// app.use('*', (req, res, next) => {
-//   db.User.findOne({isLoggedin: true}).populate('activity')
-//   .exec((err, foundUser) => {
-//     console.log(foundUser.activities[0]);
-//     if (err) return console.log(err);
-//     res.locals.user = foundUser;
-//     next();
-//   });
-// });
 
 // Middleware
 app.use(express.static(`${__dirname}/public`));

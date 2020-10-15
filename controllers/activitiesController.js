@@ -1,29 +1,24 @@
 const express = require('express');
 const router = express.Router();
-
-// Database connection
-const db = require('../models');
 const activities = require('./activitiesSeedData');
 const prompts = require('./promptSeedData');
 const user = require('./userSeedData');
+var multer  = require('multer');
+var upload = multer({ dest: 'public/images' });
 
-// Current path '/activities'
+// Database connection
+const db = require('../models');
+
+// Current path '/activities'r
 
 // GET Index /
 router.get('/', (req, res) => {
-  db.Activity.find({}, (err, allActivities) => {
-    if (err) return console.log(err);
-
     const context = {
-      allActivities: allActivities,
-      activities: activities,
-      prompts: prompts,
-      user: user,
+      user: res.locals.user,
     };
 
     res.render('activities/index', context)
-  })
-});
+  });
 
 // GET New
 router.get('/new', (req, res) => {
