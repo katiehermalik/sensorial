@@ -21,9 +21,7 @@ router.get('/', (req, res) => {
 // GET New
 router.get('/new', (req, res) => {
   const context = {
-    activities: activities,
-    prompts: prompts,
-    user: user,
+    user: res.locals.user,
   };
   res.render('activities/new', context);
 });
@@ -37,8 +35,7 @@ router.get('/:activityId', (req, res) => {
 
     const context = {
       activities: activityById,
-      prompts: prompts,
-      user: user,
+      user: res.locals.user,
     };
 
     res.render('activities/show', context);
@@ -65,8 +62,7 @@ router.get('/:activityId/edit', (req, res) => {
 
       const context = {
       activities: foundActivity,
-      prompts: prompts,
-      user: user,
+      user: res.locals.user,
     }
     res.render('activities/edit', context)
   });
