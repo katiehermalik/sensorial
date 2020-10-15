@@ -1,7 +1,7 @@
   <body>
     <h1>New Activity</h1>
     <section class="NewActivityForm">
-      <form action="/activities" method="POST">
+      <form action="/activities" method="POST" enctype="multipart/form-data">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="title">Title</label>
@@ -17,8 +17,8 @@
             <textarea class="form-control" name="experienceDesc" id="experienceDesc" rows="3"></textarea>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Email address</label>
-            <input type="url" class="form-control" name="photo" id="photo" placeholder="photo url">
+            <label for="exampleFormControlInput1">Photo</label>
+            <input type="file" accept="image/*" class="form-control" name="photo" id="photo" placeholder="photo file">
           </div>
         <button type="submit" class="btn btn-warning">Save</button>
       </form>

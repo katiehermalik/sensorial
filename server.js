@@ -3,11 +3,13 @@
 const express = require('express');
 const app = express();
 
+
 // 3rd party modules
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
-const ejsLayouts = require('express-ejs-layouts')
+const ejsLayouts = require('express-ejs-layouts');
+const multer  = require('multer')
 
 require('dotenv').config();
 const PORT = process.env.PORT || 4000;
@@ -21,6 +23,7 @@ const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
 // granting views access too that user's document.
+<<<<<<< HEAD
 // app.use('*', (req, res, next) => {
 //   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
 //     if (err) return console.log(err);
@@ -42,6 +45,13 @@ app.use((req, res, next) => {
     console.log(foundUser);
     next();
     };
+=======
+app.use('*', (req, res, next) => {
+  db.User.findOne({isLoggedin: true}, (err, foundUser) => {
+    if (err) return console.log(err);
+    res.locals.user = foundUser;
+    next();
+>>>>>>> Simone
   });
 });
 
