@@ -39,22 +39,22 @@
           <div class="sign-up-modal">
             <form id="sign-up-form" action="/" method="POST">
               <div class="form-group">
-                <input type="text" name="username" placeholder="Username">
+                <input type="text" class="form-control" name="username" placeholder="Username">
               </div>
               <div class="form-group">
-                <input type="text" name="email" placeholder="Email">
+                <input type="text" class="form-control" name="email" placeholder="Email">
               </div>
               <div class="form-group">
-                <input type="text" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
               </div>
               <div class="form-group">
-                <input type="text" name="picture" placeholder="Profile Picture">
+                <input type="text" class="form-control" name="picture" placeholder="Profile Picture URL">
               </div>
             </form>
           </div>
         </div>
         <div class="modal-footer">
-          <input form="sign-up-form" type="submit" value="Save" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+          <input form="sign-up-form" type="submit" value="Save" class="btn btn-warning" data-toggle="modal" data-target="#login-modal">
         </div>
       </div>
     </div>
@@ -74,16 +74,16 @@
           <div class="login-modal">
             <form id="login-form" action="/currentprompt?_method=PUT" method="POST">
               <div class="form-group">
-                <input type="text" name="username" placeholder="Username">
+                <input type="text" class="form-control" name="username" placeholder="Username">
               </div>
               <div class="form-group">
-                <input type="text" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
               </div>
             </form>
           </div>
         </div>
         <div class="modal-footer">
-          <input form="login-form" type="submit" value="Login" class="btn btn-primary">
+          <input form="login-form" type="submit" value="Login" class="btn btn-warning"
         </div>
       </div>
     </div>

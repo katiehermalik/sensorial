@@ -29,6 +29,15 @@ app.use('*', (req, res, next) => {
   });
 });
 
+// app.use('*', (req, res, next) => {
+//   db.User.findOne({isLoggedin: true}).populate('activity')
+//   .exec((err, foundUser) => {
+//     console.log(foundUser.activities[0]);
+//     if (err) return console.log(err);
+//     res.locals.user = foundUser;
+//     next();
+//   });
+// });
 
 // Middleware
 app.use(express.static(`${__dirname}/public`));
