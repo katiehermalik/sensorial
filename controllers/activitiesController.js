@@ -11,19 +11,12 @@ const user = require('./userSeedData');
 
 // GET Index /
 router.get('/', (req, res) => {
-  db.Activity.find({}, (err, allActivities) => {
-    if (err) return console.log(err);
-
-    const context = {
-      allActivities: allActivities,
-      activities: activities,
-      prompts: prompts,
-      user: user,
-    };
-
-    res.render('activities/index', context)
-  })
+  const context = {
+    user: res.locals.user,
+  }
+  res.render('activities/index', context)
 });
+
 
 // GET New
 router.get('/new', (req, res) => {
