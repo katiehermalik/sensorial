@@ -21,23 +21,28 @@ const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
 // granting views access too that user's document.
-app.use('*', (req, res, next) => {
-  db.User.findOne({isLoggedin: true}, (err, foundUser) => {
-    if (err) return console.log(err);
-    res.locals.user = foundUser;
-    next();
-  });
-});
-
 // app.use('*', (req, res, next) => {
-//   db.User.findOne({isLoggedin: true}).populate('activity')
-//   .exec((err, foundUser) => {
-//     console.log(foundUser.activities[0]);
+//   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
 //     if (err) return console.log(err);
 //     res.locals.user = foundUser;
 //     next();
 //   });
 // });
+
+app.use('*', (req, res, next) => {
+  db.User.findOne({isLoggedin: true}).populate('activities')
+  .exec((err, foundUser) => {
+    if (foundUser === null) {
+      if (err) return console.log(err);
+      res.locals.user = foundUser;
+      next();
+    } else {
+    if (err) return console.log(err);
+    res.locals.user = foundUser;
+    next();
+    };
+  });
+});
 
 // Middleware
 app.use(express.static(`${__dirname}/public`));

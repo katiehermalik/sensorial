@@ -13,6 +13,13 @@ body {
   color: rgb(231, 126, 116)
 }
 
+.btn {
+  /* border: lightgrey solid 2px; */
+  box-shadow: 6px 3px 11px -3px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 4px 6px 11px -10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 6px 11px -6px rgba(0,0,0,0.75);
+}
+
 /* --------------------------------- Landingn Page --------------------------------------- */
 
 .landing-container {

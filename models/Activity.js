@@ -15,15 +15,15 @@ const activitySchema = new mongoose.Schema({
     },
     experienceDesc: String,
     photo: String,
-    user: {
+    user: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-    }
+    }]
 }, {
     timestamps: true
 });
 
-const Activity = mongoose.model('activities', activitySchema);
+const Activity = mongoose.model('Activity', activitySchema);
 
 module.exports = Activity;
   

@@ -9,14 +9,12 @@
   <h1>Activities Journal</h1>
   <h2>Hello <%=user.username%></h2>
   <ul>
-  <% allActivities.forEach((activities)=> { %>
+  <% user.activities.forEach((activity)=> { %>
     <li>
-     <a class="nav-link color-1" href="/activities/<%= activities._id %>">
-      <h4><%= activities.title %></h4>
-    </a> 
+     <a class="nav-link color-1" href="/activities/<%= activity._id %>"><%= user.activities.title %></a>
     </li>
   <% }) %>
-</ul>
+  </ul>
 </body>
 </html>
 
