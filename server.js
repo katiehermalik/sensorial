@@ -29,7 +29,7 @@ const ctrl = require('./controllers');
 //   });
 // });
 
-app.use('*', (req, res, next) => {
+app.use((req, res, next) => {
   db.User.findOne({isLoggedin: true}).populate('activities')
   .exec((err, foundUser) => {
     if (foundUser === null) {
@@ -39,6 +39,7 @@ app.use('*', (req, res, next) => {
     } else {
     if (err) return console.log(err);
     res.locals.user = foundUser;
+    console.log(foundUser);
     next();
     };
   });
