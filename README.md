@@ -45,6 +45,8 @@ The user is also able to modify or delete their user profile if they choose to. 
 [Bubble Painting](http://www.housingaforest.com/bubble-painting/) - Housing a Forest
 
 [potato stamping](https://www.naturalbeachliving.com/potato-stamping-pumpkins-preschool-activity/) - Natural Beach Living
+
+[Budding Artists](https://www.budding-artists.org/) - Painting with Acrylic & Found Objects, Yarn Art, Collage, Clay, Drawing
   
 ### **Copyright**
 NavBar template: Copyright (c) 2013-2020 Start Bootstrap LLC 

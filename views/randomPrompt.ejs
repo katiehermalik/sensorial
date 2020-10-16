@@ -1,6 +1,6 @@
 <body>
-    <h1>Random Prompt</h1>
-    <h4><%=prompt[randomNum].name%></h4>
+    <h1 class="mb-4">Random Prompt</h1>
+    <h4 class="mb-4"><%=prompt[randomNum].name%></h4>
     <p class="materials"><strong>Materials required:</strong>
       <ul id="materials">
         <% for (let i=0; i<prompt.length; i++ ){ %>
@@ -9,7 +9,7 @@
       </ul>
     </p>
     <p class="instructions"><strong>Instructions:</strong>
-      <div><%=prompt[randomNum].instructions%></div>
+      <div class="text-center"><%=prompt[randomNum].instructions%></div>
     </p>
     <p class="experienceGoals"><strong>Experience Goals:</strong>
     <div><%=prompt[randomNum].experienceGoals%></div></p>
