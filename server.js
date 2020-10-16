@@ -39,7 +39,6 @@ app.use((req, res, next) => {
     } else {
     if (err) return console.log(err);
     res.locals.user = foundUser;
-    console.log(foundUser);
     next();
     };
   });
@@ -75,8 +74,10 @@ app.get('/contact', (req, res) => {
 
 // POST Create user (sign up modal)
 app.post('/', (req, res) => {
+  req.body["isLoggedin"] = true;
   db.User.create(req.body, (err, newUser) => {
     if (err) return console.log(err);
+    res.redirect('/currentprompt')
   });
 });
 

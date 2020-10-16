@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading color-1">Activities Journal</div>
+    <a href="/activities" class="sidebar-heading color-1">Activities Journal</a>
     <div class="list-group list-group-flush">
       <% user.activities.forEach((activity) => { %>
-        <a href="/activities/<%= activity._id %>" class="list-group-item list-group-item-action bg-light"><%= activity.title %></a>
+      <a href="/activities/<%= activity._id %>"
+        class="list-group-item list-group-item-action bg-light"><%= activity.title %></a>
       <% }) %>
     </div>
   </div>
 </body>
+
 </html>

@@ -1,16 +1,14 @@
-  <body>
-    <h1><%= activities.title %></h1>
-    <p><%= activities.note %></p>
-    <p><%= activities.experienceDesc %></p>
-    <img src="<%= activities.photo %>" alt="photo of <%= activities.title %>"/>
-    <div class="d-inline-flex m-2"></div>
-      <form action="/activities/<%= activities.id %>/edit" method="GET">
-        <button type="submit" class="btn btn-warning m-2">Edit</button>
-      </form>
-      <form action="/activities/<%= activities.id %>?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-warning m-2">Delete Activity</button>
-      </form>
-    </div>
-  </body>
-
-  
+<body>
+  <h1><%= activities.title %></h1>
+  <p><%= activities.note %></p>
+  <p><%= activities.experienceDesc %></p>
+  <img src="<%= activities.photo %>" alt="photo of <%= activities.title %>" />
+  <div class="d-inline-flex m-2"></div>
+  <form action="/activities/<%= activities.id %>/edit" method="GET">
+    <button type="submit" class="btn btn-warning m-2">Edit</button>
+  </form>
+  <form action="/activities/<%= activities.id %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-warning m-2">Delete Activity</button>
+  </form>
+  </div>
+</body>

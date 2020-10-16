@@ -1,18 +1,16 @@
-
 <body>
   <h1>User Profile</h1>
   <img id="profile-pic" src="<%= user.picture %>" alt="profile-picture">
   <h2><%=user.username%></h2>
   <h2><%=user.email%></h2>
   <div class="flex-row"></div>
-    <div class="d-inline-flex m-2">
-      <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-warning m-2">Delete</button>
-      </form>
-      <form action="/users/<%=user._id%>/edit" method="GET">
-        <button type="submit" class="btn btn-warning m-2">Update</button>
-      </form>
-    </div>
+  <div class="d-inline-flex m-2">
+    <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+      <button type="submit" class="btn btn-warning m-2">Delete</button>
+    </form>
+    <form action="/users/<%=user._id%>/edit" method="GET">
+      <button type="submit" class="btn btn-warning m-2">Update</button>
+    </form>
+  </div>
   </div>
 </body>
-
