@@ -1,7 +1,7 @@
 /* --------------------------------- Images --------------------------------------- */
 
 body {
-  background-image: url('/images/Background.jpeg');
+  background-image: url('/images/background.jpeg');
   background-size: 200vh;
 }
 
@@ -17,6 +17,12 @@ body {
   height: 200px;
   border-radius: 50%;
 }
+
+.activity-photo {
+  height: 200px;
+}
+
+/* --------------------------------- Nav --------------------------------------- */
 
 #sensorial-about {
   display: inline;

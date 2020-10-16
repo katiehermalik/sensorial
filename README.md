@@ -35,7 +35,26 @@ The user is also able to modify or delete their user profile if they choose to. 
 ### **ERD**
 ![ERD](https://i.imgur.com/2sa2UQY.png) 
 
-### **Credits** 
+### **Technologies**
+* MongoDB
+* ExpressJS
+* Node.js
+
+### **Dependencies**
+* Body-parser
+* Bootstrap
+* Dotenv
+* EJS
+* Express
+* Express-ejs-layouts
+* Express-session
+* Method-override
+* Mongoose
+* Morgan
+* Multer
+* Startbootstrap-simple-sidebar
+
+### **Credits for Activity data used for presentation purposes** 
 **Prompt/Activity sources**
 
 [Mixed Media Collage](http://mollymoocrafts.com/art-project-for-kids-collage/) - Molly Moo Crafts
@@ -45,8 +64,6 @@ The user is also able to modify or delete their user profile if they choose to. 
 [Bubble Painting](http://www.housingaforest.com/bubble-painting/) - Housing a Forest
 
 [potato stamping](https://www.naturalbeachliving.com/potato-stamping-pumpkins-preschool-activity/) - Natural Beach Living
-
-[Budding Artists](https://www.budding-artists.org/) - Painting with Acrylic & Found Objects, Yarn Art, Collage, Clay, Drawing
   
 ### **Copyright**
 NavBar template: Copyright (c) 2013-2020 Start Bootstrap LLC 
