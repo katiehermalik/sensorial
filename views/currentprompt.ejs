@@ -1,15 +1,20 @@
 <body>
-  <h1 class="mb-4">Current Prompt</h1>
-  <h3>Paper Towel Watercolors</h3>
-  <p class="mt-3 materials"><strong>Materials required:</strong>
-  <ul id="materials">
-    <li>paper towels</li>
-    <li>liquid watercolors</li>
-    <li>small cups or jars</li>
-    <li>pipettes</li>
-    <li>newspaper/plastic sheeting (for protecting your workspace)</li>
-    <li>clothesline or wire hangers (for drying)</li>
-  </ul>
+  <h1>Current Prompt</h1>
+  <div class="d-inline-flex m-2">
+  <form action="/randomPrompt" method="GET"><!-- generate random prompt from array needs JS -->
+    <input type="submit" class="btn btn-warning m-2" value="Random Prompt" />
+  </form>
+</div>
+  <h4>Paper Towel Watercolors</h4>
+  <p class="materials"><strong>Materials required:</strong>
+    <ul id="materials">
+      <li>paper towels</li>
+      <li>liquid watercolors</li>
+      <li>small cups or jars</li>
+      <li>pipettes</li>
+      <li>newspaper/plastic sheeting (for protecting your workspace)</li>
+      <li>clothesline or wire hangers (for drying)</li>
+    </ul>
   </p>
   <p class="instructions"><strong>Instructions:</strong>
   <div>Set up the area by covering the table if you're going to, filling the small cups or jars with the liquid
