@@ -20,14 +20,6 @@ const ctrl = require('./controllers');
 
 // Custom middleware - checking who is logged in and 
 // granting views access too that user's document.
-// app.use('*', (req, res, next) => {
-//   db.User.findOne({isLoggedin: true}, (err, foundUser) => {
-//     if (err) return console.log(err);
-//     res.locals.user = foundUser;
-//     next();
-//   });
-// });
-
 app.use((req, res, next) => {
   db.User.findOne({isLoggedin: true}).populate('activities')
   .exec((err, foundUser) => {
@@ -50,12 +42,12 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(morgan(':method :url'));
 
-
 // Connect to database
 const db = require('./models');
 
 // seed data
 const prompt = require('./controllers/promptSeedData')
+
 // ------------------------------------------------------ Routes
 
 // Root route (landing page)
@@ -118,7 +110,6 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
   });
 });
-
 
 // Routes
 app.use('/users', ctrl.users);
