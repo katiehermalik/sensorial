@@ -1,8 +1,12 @@
 
 <body>
   <h1>Current Prompt</h1>
-  <h6>Hello <%=user.username%></h6>
-  <h3>Paper Towel Watercolors</h3>
+  <div class="d-inline-flex m-2">
+  <form action="/randomPrompt" method="GET"><!-- generate random prompt from array needs JS -->
+    <input type="submit" class="btn btn-warning m-2" value="Random Prompt" />
+  </form>
+</div>
+  <h4>Paper Towel Watercolors</h4>
   <p class="materials"><strong>Materials required:</strong>
     <ul id="materials">
       <li>paper towels</li>

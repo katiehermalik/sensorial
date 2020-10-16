@@ -1,4 +1,3 @@
-
 // connection to server
 const express = require('express');
 const app = express();
@@ -39,7 +38,6 @@ app.use((req, res, next) => {
     } else {
     if (err) return console.log(err);
     res.locals.user = foundUser;
-    console.log(foundUser);
     next();
     };
   });
@@ -56,6 +54,8 @@ app.use(morgan(':method :url'));
 // Connect to database
 const db = require('./models');
 
+// seed data
+const prompt = require('./controllers/promptSeedData')
 // ------------------------------------------------------ Routes
 
 // Root route (landing page)
@@ -87,6 +87,17 @@ app.get('/currentprompt', (req, res) => {
   }
   res.render('currentprompt', context);
 });
+
+// GET Random Prompt
+app.get('/randomprompt', (req, res)=>{
+  randomNum = Math.floor(Math.random() * prompt.length)
+  const context = {
+    user: res.locals.user,
+    prompt: prompt,
+    randomNum: randomNum,
+  }
+  res.render('randomPrompt', context)
+})
 
 // PUT Login (updates user 'isloggedin' to true)
 app.put('/currentprompt', (req, res) => {
