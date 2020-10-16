@@ -91,7 +91,7 @@ app.get('/randomprompt', (req, res)=>{
     randomNum: randomNum,
   }
   res.render('randomPrompt', context)
-})
+});
 
 // PUT Login (updates user 'isloggedin' to true)
 app.put('/currentprompt', (req, res) => {
