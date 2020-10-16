@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const activities = require('./activitiesSeedData');
 const prompts = require('./promptSeedData');
 const user = require('./userSeedData');
 

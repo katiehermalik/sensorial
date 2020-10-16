@@ -8,6 +8,7 @@ const promptSchema = new mongoose.Schema ({
     instructions: String,
     experienceGoals: String,
     vocabulary: String,
+    picture: String,
     activities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Activity'

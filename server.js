@@ -54,6 +54,8 @@ app.use(morgan(':method :url'));
 // Connect to database
 const db = require('./models');
 
+// seed data
+const prompt = require('./controllers/promptSeedData')
 // ------------------------------------------------------ Routes
 
 // Root route (landing page)
@@ -87,6 +89,15 @@ app.get('/currentprompt', (req, res) => {
 });
 
 // GET Random Prompt
+app.get('/randomprompt', (req, res)=>{
+  randomNum = Math.floor(Math.random() * prompt.length)
+  const context = {
+    user: res.locals.user,
+    prompt: prompt,
+    randomNum: randomNum,
+  }
+  res.render('randomPrompt', context)
+})
 
 // PUT Login (updates user 'isloggedin' to true)
 app.put('/currentprompt', (req, res) => {
