@@ -1,7 +1,7 @@
   <body>
     <h1>New Activity</h1>
     <section class="NewActivityForm">
-      <form action="/activities" method="POST" enctype="multipart/form-data">
+      <form action="/activities" method="POST">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="title">Title</label>
@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Photo</label>
-            <input type="file" accept="image/*" class="form-control" name="photo" id="photo" placeholder="photo file">
+            <input type="text"  class="form-control" name="photo" id="photo" placeholder="photo link">
           </div>
         <button type="submit" class="btn btn-warning">Save</button>
       </form>

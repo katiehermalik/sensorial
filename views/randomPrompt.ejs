@@ -1,0 +1,31 @@
+<body>
+    <h1>Random Prompt</h1>
+    <h4><%=prompt.name</h4>
+    <p class="materials"><strong>Materials required:</strong>
+      <ul id="materials">
+        <% for (let i=0; i<prompt.length; i++ ) %>
+        <li><%=prompt.materials%></li>
+        <% %>
+      </ul>
+    </p>
+    <p class="instructions"><strong>Instructions:</strong>
+      <div><%=prompt.instructions%></div>
+    </p>
+    <p class="experienceGoals"><strong>Experience Goals:</strong>
+    <div><%=prompt.experienceGoals%></div></p>
+    <p class="vocabulary"><strong>Vocabulary:</strong>
+      <div><%prompt.vocabulary%></div>
+    </p>
+    <div class="d-inline-flex m-2">
+      <form action="/activities/new" method="GET">
+        <input type="submit" class="btn btn-warning m-2" value="Create New Activity" />
+      </form>
+      <form action="/activities" method="GET">
+        <input type="submit" class="btn btn-warning m-2" value="My Activities Journal" />
+      </form>
+      <form action="/currentPrompt" method="GET">
+        <input type="submit" class="btn btn-warning m-2" value="Back to Current Prompt" />
+      </form>
+    </div>
+  </body>
+  

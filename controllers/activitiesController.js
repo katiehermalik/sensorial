@@ -3,8 +3,6 @@ const router = express.Router();
 const activities = require('./activitiesSeedData');
 const prompts = require('./promptSeedData');
 const user = require('./userSeedData');
-var multer  = require('multer');
-var upload = multer({ dest: 'public/images' });
 
 // Database connection
 const db = require('../models');
@@ -31,7 +29,6 @@ router.get('/new', (req, res) => {
 // GET Show /:id
 router.get('/:activityId', (req, res) => {
   db.Activity.findById(req.params.activityId)
-  .populate('prompt')
   .exec((err, activityById)=>{
     if (err) return console.log(err);
 
@@ -39,7 +36,7 @@ router.get('/:activityId', (req, res) => {
       activities: activityById,
       user: res.locals.user,
     };
-
+    console.log(db.Activity.findById(req.params.activityId))
     res.render('activities/show', context);
   })
 });

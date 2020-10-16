@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 
@@ -33,7 +32,9 @@ router.get('/:userId/edit', (req, res) => {
 
 // PUT update
 router.put('/:userId', (req, res) => {
-  db.User.findByIdAndUpdate(req.params.userId, req.body, { new: true },
+  db.User.findByIdAndUpdate(req.params.userId, req.body, {
+      new: true
+    },
     (err, updatedUser) => {
       if (err) return console.log(err);
       res.redirect(`/users/${updatedUser._id}`);
@@ -44,7 +45,11 @@ router.put('/:userId', (req, res) => {
 router.delete('/:userId', (req, res) => {
   db.User.findByIdAndDelete(req.params.userId, (err, deletedUser) => {
     if (err) return console.log(err);
-    db.Activity.deleteMany({_id: { $in: deletedUser.activities }}, (err) => {
+    db.Activity.deleteMany({
+      _id: {
+        $in: deletedUser.activities
+      }
+    }, (err) => {
       if (err) return console.log(err);
       res.redirect('/');
     })
@@ -52,4 +57,3 @@ router.delete('/:userId', (req, res) => {
 });
 
 module.exports = router;
-
