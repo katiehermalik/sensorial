@@ -13,7 +13,7 @@ router.get('/:userId', (req, res) => {
     (err, foundUser) => {
       if (err) return console.log(err);
       const context = {
-        user: foundUser,
+        user: res.locals.user,
       };
       res.render('users/show', context);
     });
@@ -24,7 +24,7 @@ router.get('/:userId/edit', (req, res) => {
   db.User.findById(req.params.userId, (err, foundUser) => {
     if (err) return console.log(err);
     const context = {
-      user: foundUser,
+      user: res.locals.user,
     };
     res.render('users/edit', context);
   });
