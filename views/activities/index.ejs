@@ -1,0 +1,6 @@
+<body>
+  <h1 class="mb-4"><%=user.username%>'s Activity Journal</h1>
+    <% user.activities.forEach((activity)=> { %>
+      <a class="nav-link color-1 mb-3" href="/activities/<%= activity._id %>"><%= activity.title %></a>
+    <% }) %>
+</body>

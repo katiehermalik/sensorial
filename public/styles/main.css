@@ -1,0 +1,104 @@
+/* --------------------------------- Images --------------------------------------- */
+
+body {
+  background-image: url('/images/Background.jpeg');
+  background-size: 200vh;
+}
+
+#logo {
+  width: 300px;
+}
+
+#logo-thumbnail {
+  width: 40px;
+}
+
+#profile-pic {
+  height: 200px;
+  border-radius: 50%;
+}
+
+#sensorial-about {
+  display: inline;
+}
+
+
+/* --------------------------------- Font --------------------------------------- */
+
+* {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.color-1 {
+  color: rgb(231, 126, 116)
+}
+
+/* --------------------------------- Buttons --------------------------------------- */
+
+.btn {
+  /* border: lightgrey solid 2px; */
+  box-shadow: 6px 3px 11px -3px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 4px 6px 11px -10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 6px 11px -6px rgba(0,0,0,0.75);
+}
+
+
+.landing-container {
+  display: flex;
+  position: relative;
+  top: 50vh;
+}
+
+.sidebar-heading {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0rem 1.25rem !important;
+}
+
+/* ---------------------------- Bootstrap Nav Bar Template CSS ------------------------------ */
+/* Copyright (c) 2013-2020 Start Bootstrap LLC */
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+min-height: 100vh;
+margin-left: -15rem;
+-webkit-transition: margin .25s ease-out;
+-moz-transition: margin .25s ease-out;
+-o-transition: margin .25s ease-out;
+transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+padding: 0.875rem 1.25rem;
+font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+width: 15rem;
+}
+
+#page-content-wrapper {
+min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+margin-left: 0;
+}
+
+@media (min-width: 768px) {
+#sidebar-wrapper {
+  margin-left: 0;
+}
+
+#page-content-wrapper {
+  min-width: 0;
+  width: 100%;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -15rem;
+}
+}
