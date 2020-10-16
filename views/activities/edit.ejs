@@ -14,12 +14,11 @@
       </div>
       <div class="form-group">
         <label for="experienceDesc">Experience Description</label>
-        <textarea class="form-control" name="experienceDesc" id="experienceDesc" rows="3"
-          value="<%=activities.experienceDesc%>"></textarea>
+        <textarea class="form-control" name="experienceDesc" id="experienceDesc" rows="3"><%=activities.experienceDesc%></textarea>
       </div>
       <div class="form-group">
         <label for="exampleFormControlInput1">Photo</label>
-        <input type="url" class="form-control" name="photo" id="photo" placeholder="photo url">
+        <input type="url" class="form-control" name="photo" id="photo" value="<%=activities.photo%>">
       </div>
       <button type="submit" class="btn btn-warning mt-2">Save</button>
     </form>
