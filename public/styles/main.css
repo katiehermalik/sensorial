@@ -1,34 +1,9 @@
+/* --------------------------------- Images --------------------------------------- */
+
 body {
   background-image: url('/images/Background.jpeg');
-  background-size: 100%;
+  background-size: 200vh;
 }
-
-/* --------------------------------- Font --------------------------------------- */
-
-* {
-  font-family: 'Mulish', sans-serif !important;
-}
-
-.color-1 {
-  color: rgb(231, 126, 116)
-}
-
-.btn {
-  /* border: lightgrey solid 2px; */
-  box-shadow: 6px 3px 11px -3px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 4px 6px 11px -10px rgba(0,0,0,0.75);
-  -moz-box-shadow: 6px 6px 11px -6px rgba(0,0,0,0.75);
-}
-
-/* --------------------------------- Landingn Page --------------------------------------- */
-
-.landing-container {
-  display: flex;
-  position: relative;
-  top: 50vh;
-}
-
-/* --------------------------------- Images --------------------------------------- */
 
 #logo {
   width: 300px;
@@ -48,8 +23,40 @@ body {
 }
 
 
+/* --------------------------------- Font --------------------------------------- */
+
+* {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.color-1 {
+  color: rgb(231, 126, 116)
+}
+
+/* --------------------------------- Buttons --------------------------------------- */
+
+.btn {
+  /* border: lightgrey solid 2px; */
+  box-shadow: 6px 3px 11px -3px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 4px 6px 11px -10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 6px 11px -6px rgba(0,0,0,0.75);
+}
+
+
+.landing-container {
+  display: flex;
+  position: relative;
+  top: 50vh;
+}
+
+.sidebar-heading {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0rem 1.25rem !important;
+}
 
 /* ---------------------------- Bootstrap Nav Bar Template CSS ------------------------------ */
+/* Copyright (c) 2013-2020 Start Bootstrap LLC */
 
 #wrapper {
   overflow-x: hidden;
