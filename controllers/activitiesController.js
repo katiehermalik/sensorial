@@ -35,7 +35,6 @@ router.get('/:activityId', (req, res) => {
       activities: activityById,
       user: res.locals.user,
     };
-    console.log(db.Activity.findById(req.params.activityId))
     res.render('activities/show', context);
   })
 });
@@ -92,10 +91,8 @@ router.delete('/:activityId', (req, res) => {
         if (err) return console.log(err);
         res.redirect('/activities')
         return console.log(deletedActivity)
-        
       })
-      console.log(deletedActivity)
-    })
+  })
 });
 
 module.exports = router;
