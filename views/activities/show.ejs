@@ -2,7 +2,7 @@
   <h1 class="mb-4"><%= activities.title %></h1>
   <p class="text-center"><%= activities.note %></p>
   <p class="text-center"><%= activities.experienceDesc %></p>
-  <img src="<%= activities.photo %>" class="mb-3" alt="photo of <%= activities.title %>" />
+  <img src="<%= activities.photo %>" class="activity-photo mb-3" alt="photo of <%= activities.title %>" />
   <div class="d-inline-flex m-2">
     <form action="/activities/<%= activities.id %>/edit" method="GET">
       <button type="submit" class="btn btn-warning m-3">Edit</button>
