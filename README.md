@@ -1,11 +1,16 @@
-# **Project One: Sensorial**
+# **Sensorial**
 
-### **Description**
 A process-based art app with weekly activity prompts designed for children ages 3-5.
 
 This app will act as a reference and support for educators and parents as they guide their young explorers through activities that will be focused on experimentation and engagement of the senses to help them better understand the world around us. 
 
-### **User Stories**
+## Index
+- [User Stories](#user-stories)
+- [Wireframes](#wireframes)
+- [ERD](#erd)
+- [Technologies](#technologies)
+
+## **User Stories**
 
 The user begins on the landing page where they are greeted by the logo, and a nav bar to the top right contains options to read more about the app, contact, sign up, or log in. 
 Upon clicking sign up, the sign up modal pops up and the user is asked to enter their username, email, password, and optionally link a profile picture. Alternatively, if they already have a profile they can click login and only need to enter their username and password. 
@@ -18,7 +23,7 @@ Each journal entry displays the activity title, the image the user uploaded (if 
 
 The user is also able to modify or delete their user profile if they choose to. On all pages once the user is logged in, their profile picture (or the default icon) will be located in the upper right corner and will be able to navigate them to their profile. Once their, the fields of username, email, password, and profile picture will be pre-populated and they'll be able to edit their information, or delete their profile if they choose to. Once they edit their profile they're redirected to their home page, and if they delete their profile they're then redirected to the initial landing page. 
 
-### **Wireframes**
+## **Wireframes**
 ![Landing](https://i.imgur.com/EnRH2fd.png)
 ![Sign Up](https://i.imgur.com/KatmC07.png)
 ![Login](https://i.imgur.com/YKEZdr4.png)
@@ -32,20 +37,20 @@ The user is also able to modify or delete their user profile if they choose to. 
 ![About](https://i.imgur.com/KQQRBkb.png)
 ![Contact](https://i.imgur.com/DX82IkT.png)
 
-### **ERD**
+## **ERD**
 ![ERD](https://i.imgur.com/2sa2UQY.png) 
 
-### **Technologies**
+## **Technologies**
+### Main Stack
 * MongoDB
-* ExpressJS
+* Express
 * Node.js
 
-### **Dependencies**
+### Dependencies
 * Body-parser
 * Bootstrap
 * Dotenv
 * EJS
-* Express
 * Express-ejs-layouts
 * Express-session
 * Method-override
@@ -54,17 +59,6 @@ The user is also able to modify or delete their user profile if they choose to. 
 * Multer
 * Startbootstrap-simple-sidebar
 
-### **Credits for Activity data used for presentation purposes** 
-**Prompt/Activity sources**
-
-[Mixed Media Collage](http://mollymoocrafts.com/art-project-for-kids-collage/) - Molly Moo Crafts
-
-[Outer Space Art](http://mericherry.com/2013/11/23/art-adventures-in-outer-space-reggio-inspired-murals-on-tin-foil/) - Meri Cherry
-
-[Bubble Painting](http://www.housingaforest.com/bubble-painting/) - Housing a Forest
-
-[potato stamping](https://www.naturalbeachliving.com/potato-stamping-pumpkins-preschool-activity/) - Natural Beach Living
-  
-### **Copyright**
+## **Copyright**
 NavBar template: Copyright (c) 2013-2020 Start Bootstrap LLC 
  
