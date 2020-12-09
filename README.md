@@ -1,6 +1,6 @@
 # **Sensorial**
 
-A process-based art app with weekly activity prompts designed for children ages 3-5. This was a passion project between 2 developers (one a mother and one an educator), designed as a resource for parents and teachers to help facilitate remote learning during the COVID-19 pandemic.
+Sensorial is a process-based art app with weekly activity prompts designed for children ages 3-5. This was a passion project between 2 developers (one a mother and one an educator), designed as a resource for parents and teachers to help facilitate remote learning during the COVID-19 pandemic.
 
 This app will support parents and educators as they guide their young explorers through activities that will be focused on experimentation and engagement of the senses to help them better understand the world around us. 
 
