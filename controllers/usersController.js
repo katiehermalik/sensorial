@@ -9,18 +9,26 @@ const db = require('../models');
 
 // Get show
 router.get('/:userId', (req, res) => {
-  const context = {
-    user: res.locals.user,
-  };
-  res.render('users/show', context);
+  if (req.session.currentUser) {
+    const context = {
+      user: res.locals.user,
+    };
+    res.render('users/show', context);
+  } else {
+    res.redirect('/')
+  }
 });
 
 // GET edit
 router.get('/:userId/edit', (req, res) => {
-  const context = {
-    user: res.locals.user,
-  };
-  res.render('users/edit', context);
+  if (req.session.currentUser) {
+    const context = {
+      user: res.locals.user,
+    };
+    res.render('users/edit', context);
+  } else {
+    res.redirect('/')
+  }
 });
 
 // PUT update

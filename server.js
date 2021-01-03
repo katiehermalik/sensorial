@@ -74,21 +74,29 @@ app.get('/contact', (req, res) => {
 
 // GET Current Prompt
 app.get('/currentprompt', (req, res) => {
-  const context = {
-    user: res.locals.user,
+  if (req.session.currentUser) {
+    const context = {
+      user: res.locals.user,
+    }
+    res.render('currentprompt', context);
+  } else {
+    res.redirect('/')
   }
-  res.render('currentprompt', context);
 });
 
 // GET Random Prompt
 app.get('/randomprompt', (req, res)=>{
-  randomNum = Math.floor(Math.random() * prompt.length)
-  const context = {
-    user: res.locals.user,
-    prompt: prompt,
-    randomNum: randomNum,
+  if (req.session.currentUser) {
+    randomNum = Math.floor(Math.random() * prompt.length)
+    const context = {
+      user: res.locals.user,
+      prompt: prompt,
+      randomNum: randomNum,
+    }
+    res.render('randomPrompt', context)
+  } else {
+    res.redirect('/')
   }
-  res.render('randomPrompt', context)
 });
 
 // Routes

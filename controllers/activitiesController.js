@@ -10,32 +10,44 @@ const db = require('../models');
 
 // GET Index /
 router.get('/', (req, res) => {
-  const context = {
-    user: res.locals.user,
+  if (req.session.currentUser) {
+    const context = {
+      user: res.locals.user,
+    }
+    res.render('activities/index', context)
+  } else {
+    res.redirect('/')
   }
-  res.render('activities/index', context)
 });
 
 
 // GET New
 router.get('/new', (req, res) => {
-  const context = {
-    user: res.locals.user,
-  };
-  res.render('activities/new', context);
+  if (req.session.currentUser) {
+    const context = {
+      user: res.locals.user,
+    };
+    res.render('activities/new', context);
+  } else {
+    res.redirect('/')
+  }
 });
 
 // GET Show /:id
 router.get('/:activityId', (req, res) => {
-  db.Activity.findById(req.params.activityId)
-  .exec((err, activityById)=>{
-    if (err) return console.log(err);
-    const context = {
-      activities: activityById,
-      user: res.locals.user,
-    };
-    res.render('activities/show', context);
-  })
+  if (req.session.currentUser) {
+    db.Activity.findById(req.params.activityId)
+    .exec((err, activityById)=>{
+      if (err) return console.log(err);
+      const context = {
+        activities: activityById,
+        user: res.locals.user,
+      };
+      res.render('activities/show', context);
+    });
+  } else {
+    res.redirect('/')
+  }
 });
 
 // POST Create
@@ -53,14 +65,18 @@ router.post('/', (req, res) => {
 
 // GET Edit /:id/edit
 router.get('/:activityId/edit', (req, res) => {
-  db.Activity.findById(req.params.activityId, (err, foundActivity) => {
-    if (err) console.log(err);
-      const context = {
-      activities: foundActivity,
-      user: res.locals.user,
-    }
-    res.render('activities/edit', context)
-  });
+  if (req.session.currentUser) {
+    db.Activity.findById(req.params.activityId, (err, foundActivity) => {
+      if (err) console.log(err);
+        const context = {
+        activities: foundActivity,
+        user: res.locals.user,
+      }
+      res.render('activities/edit', context)
+    });
+  } else {
+    res.redirect('/')
+  }
 });
 
 // PATCH/PUT Update /:id
