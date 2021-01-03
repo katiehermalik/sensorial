@@ -14,7 +14,10 @@ router.post('/signup', (req, res) => {
     if (err) return console.log(err);
     if (user) {
       console.log('User Account Already Exists');
-      return res.send('User Account Already Exists - Please Choose a Different Email.')
+      const context = {
+        message: 'User Account Already Exists - Please Choose a Different Email.'
+      };
+      return res.render('landing', context)
     }
     bcrypt.genSalt(10, (err, salt) =>{
       if (err) return console.log(err);
@@ -44,14 +47,20 @@ router.post('/login', (req, res) => {
     if (err) return console.log(err);
     if (!user) {
       console.log('Login Route: No User Found');
-      return res.send('No User with that Email Address was Found.');
+      const context = {
+        message: 'Sorry, No User Found with that Email Address.'
+      };
+      return res.render('landing', context)
     }
     // If user, compare passwords
     bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
       if (err) return console.log('Error comparing passwords')
       if (!isMatch) {
         console.log('Email Address and Password do not Match.')
-        return res.send('Email Address and Password do not Match.');
+        const context = {
+          message: 'Email Address and Password Do Not Match.'
+        };
+        return res.render('landing', context)
       }
       if (isMatch) {
         // create a new session using express sessions

@@ -1,4 +1,7 @@
 <body>
+  <% if (typeof message !== "undefined") { %>
+    <p class="error"><%=message%></p>
+  <% } %>
   <h1>Sensorial</h1>
   <div id="landing-container">
     <img class="rounded mx-auto d-block mt-5" id="logo" src="/assets/images/logo.png" class="img-fluid" alt="Responsive image">
