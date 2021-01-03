@@ -12,13 +12,9 @@ const db = require('../models');
 router.post('/signup', (req, res) => {
   db.User.findOne({email: req.body.email}, (err, user) => {
     if (err) return console.log(err);
-    if (!req.body.username || !req.body.email || !req.body.password) {
-      return res.redirect('/')
-    }
-    // If user exists, Handle Error!!!!
     if (user) {
       console.log('User Account Already Exists');
-      return res.redirect('/')
+      return res.send('User Account Already Exists - Please Choose a Different Email.')
     }
     bcrypt.genSalt(10, (err, salt) =>{
       if (err) return console.log(err);
@@ -46,14 +42,17 @@ router.post('/login', (req, res) => {
   db.User.findOneAndUpdate({email: req.body.email}, {isLoggedin: true}, 
     {new: true}, (err, user) => {
     if (err) return console.log(err);
-    // If no user found, Handle Error!!!!
     if (!user) {
       console.log('Login Route: No User Found');
-      return res.redirect('/');
+      return res.send('No User with that Email Address was Found.');
     }
     // If user, compare passwords
     bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
       if (err) return console.log('Error comparing passwords')
+      if (!isMatch) {
+        console.log('Email Address and Password do not Match.')
+        return res.send('Email Address and Password do not Match.');
+      }
       if (isMatch) {
         // create a new session using express sessions
         req.session.currentUser = user._id;
