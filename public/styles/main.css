@@ -19,7 +19,8 @@ body {
 }
 
 .activity-photo {
-  height: 200px;
+  max-height: 400px;
+  max-width: 300px;
 }
 
 /* --------------------------------- Nav --------------------------------------- */
@@ -67,6 +68,25 @@ body {
   margin-bottom: 0 !important;
   padding: 0rem 1.25rem !important;
 }
+
+/* --------------------------------- Activity Show Page --------------------------------------- */
+
+.experience {
+  white-space: pre-wrap;
+}
+
+/* --------------------------------- Activity Prompt Pages --------------------------------------- */
+#profile-card {
+  margin-bottom: 30px;
+}
+
+@media (max-width: 700px) {
+  .prompt-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 
 /* ---------------------------- Bootstrap Nav Bar Template CSS ------------------------------ */
 /* Copyright (c) 2013-2020 Start Bootstrap LLC */
