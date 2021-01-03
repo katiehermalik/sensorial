@@ -68,9 +68,9 @@ app.get('/about', (req, res) => {
 });
 
 // Contact route
-app.get('/contact', (req, res) => {
-  res.render('./contact');
-});
+// app.get('/contact', (req, res) => {
+//   res.render('./contact');
+// });
 
 // GET Current Prompt
 app.get('/currentprompt', (req, res) => {
