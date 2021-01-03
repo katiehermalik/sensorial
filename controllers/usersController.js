@@ -9,25 +9,18 @@ const db = require('../models');
 
 // Get show
 router.get('/:userId', (req, res) => {
-  db.User.findById((req.params.userId),
-    (err, foundUser) => {
-      if (err) return console.log(err);
-      const context = {
-        user: res.locals.user,
-      };
-      res.render('users/show', context);
-    });
+  const context = {
+    user: res.locals.user,
+  };
+  res.render('users/show', context);
 });
 
 // GET edit
 router.get('/:userId/edit', (req, res) => {
-  db.User.findById(req.params.userId, (err, foundUser) => {
-    if (err) return console.log(err);
-    const context = {
-      user: res.locals.user,
-    };
-    res.render('users/edit', context);
-  });
+  const context = {
+    user: res.locals.user,
+  };
+  res.render('users/edit', context);
 });
 
 // PUT update
@@ -41,7 +34,7 @@ router.put('/:userId', (req, res) => {
     });
 });
 
-// DELETE
+// DELETE user and all their activities
 router.delete('/:userId', (req, res) => {
   db.User.findByIdAndDelete(req.params.userId, (err, deletedUser) => {
     if (err) return console.log(err);

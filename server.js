@@ -6,7 +6,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
-const ejsLayouts = require('express-ejs-layouts')
+const ejsLayouts = require('express-ejs-layouts');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 require('dotenv').config();
 const PORT = process.env.PORT || 4000;
@@ -18,29 +20,34 @@ app.use(ejsLayouts);
 // CONTROLLERS
 const ctrl = require('./controllers');
 
-// Custom middleware - checking who is logged in and 
-// granting views access too that user's document.
-app.use((req, res, next) => {
-  db.User.findOne({isLoggedin: true}).populate('activities')
-  .exec((err, foundUser) => {
-    if (foundUser === null) {
-      if (err) return console.log(err);
-      res.locals.user = foundUser;
-      next();
-    } else {
-    if (err) return console.log(err);
-    res.locals.user = foundUser;
-    next();
-    };
-  });
-});
 
 // Middleware
 app.use(express.static(`${__dirname}/public`));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    // expires in two weeks
+    maxAge: 1000 * 60 * 60 * 24 * 7 * 2
+  },
+  store: new MongoStore({ url: process.env.MONGODB_URI })
+}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(morgan(':method :url'));
+
+// Custom middleware - checking who is logged in and 
+// granting views access too that user's document.
+app.use((req, res, next) => {
+  db.User.findOne({_id: req.session.currentUser}).populate('activities')
+  .exec((err, foundUser) => {
+    if (err) return console.log(err);
+    res.locals.user = foundUser;
+    next();
+  });
+});
 
 // Connect to database
 const db = require('./models');
@@ -65,15 +72,6 @@ app.get('/contact', (req, res) => {
   res.render('./contact');
 });
 
-// POST Create user (sign up modal)
-app.post('/', (req, res) => {
-  req.body["isLoggedin"] = true;
-  db.User.create(req.body, (err, newUser) => {
-    if (err) return console.log(err);
-    res.redirect('/currentprompt')
-  });
-});
-
 // GET Current Prompt
 app.get('/currentprompt', (req, res) => {
   const context = {
@@ -93,27 +91,10 @@ app.get('/randomprompt', (req, res)=>{
   res.render('randomPrompt', context)
 });
 
-// PUT Login (updates user 'isloggedin' to true)
-app.put('/currentprompt', (req, res) => {
-  db.User.findOneAndUpdate({username: req.body.username}, {isLoggedin: true}, 
-    {new: true}, (err) => {
-    if (err) return console.log(err);
-    res.redirect('currentprompt');
-  });
-});
-
-// GET Logout (updates current user 'isloggedin' to false)
-app.get('/logout', (req, res) => {
-  db.User.findOneAndUpdate({isLoggedin: true}, {isLoggedin: false}, 
-    {new: true}, (err) => {
-    if (err) return console.log(err);
-    res.redirect('/');
-  });
-});
-
 // Routes
 app.use('/users', ctrl.users);
 app.use('/activities', ctrl.activities);
+app.use('/auth', ctrl.auth);
 
 //Listener
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -6,7 +6,7 @@ const user = require('./userSeedData');
 // Database connection
 const db = require('../models');
 
-// Current path '/activities'r
+// Current path '/activities'
 
 // GET Index /
 router.get('/', (req, res) => {
@@ -30,7 +30,6 @@ router.get('/:activityId', (req, res) => {
   db.Activity.findById(req.params.activityId)
   .exec((err, activityById)=>{
     if (err) return console.log(err);
-
     const context = {
       activities: activityById,
       user: res.locals.user,
@@ -56,7 +55,6 @@ router.post('/', (req, res) => {
 router.get('/:activityId/edit', (req, res) => {
   db.Activity.findById(req.params.activityId, (err, foundActivity) => {
     if (err) console.log(err);
-
       const context = {
       activities: foundActivity,
       user: res.locals.user,
