@@ -12,6 +12,9 @@ const db = require('../models');
 router.post('/signup', (req, res) => {
   db.User.findOne({email: req.body.email}, (err, user) => {
     if (err) return console.log(err);
+    if (!req.body.username || !req.body.email || !req.body.password) {
+      return res.redirect('/')
+    }
     // If user exists, Handle Error!!!!
     if (user) {
       console.log('User Account Already Exists');
