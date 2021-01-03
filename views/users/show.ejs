@@ -1,7 +1,11 @@
 <body>
   <h1>User Profile</h1>
+  <% if (user.picture) { %>
   <img id="profile-pic" class="mt-3" src="<%=user.picture%>" alt="profile-picture">
+  <% } %>
+  <% if (user.username) { %>
   <h2 class="mt-3"><%=user.username%></h2>
+  <% } %>
   <div class="flex-row"></div>
   <div class="d-inline-flex m-2">
     <form action="/users/<%=user._id%>?_method=DELETE" method="POST">

@@ -13,7 +13,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  picture: String,
+  picture: {
+    type: String,
+    default: "https://i.ibb.co/zWgh0vx/default-profile-pic.png",
+  },
   isLoggedin: {
     type: Boolean,
     default: false,

@@ -26,6 +26,7 @@ router.get('/new', (req, res) => {
   if (req.session.currentUser) {
     const context = {
       user: res.locals.user,
+      error: null,
     };
     res.render('activities/new', context);
   } else {
@@ -53,14 +54,21 @@ router.get('/:activityId', (req, res) => {
 // POST Create
 router.post('/', (req, res) => {
   foundUser = res.locals.user;
-  db.Activity.create(req.body, (err, newActivity) => {
-    if (err) return console.log(err);
-    foundUser.activities.push(newActivity._id);
-    foundUser.save((err, savedUser) => {
+  if (!req.body.title) {
+    const context = {
+      error: '* Title is required',
+    };
+    res.render('activities/new', context);
+  } else {
+    db.Activity.create(req.body, (err, newActivity) => {
       if (err) return console.log(err);
-      res.redirect(`/activities/${newActivity.id}`);
+      foundUser.activities.push(newActivity._id);
+      foundUser.save((err, savedUser) => {
+        if (err) return console.log(err);
+        res.redirect(`/activities/${newActivity.id}`);
+      });
     });
-  });
+  }
 });
 
 // GET Edit /:id/edit

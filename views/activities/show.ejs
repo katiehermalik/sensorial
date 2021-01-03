@@ -1,8 +1,14 @@
 <body>
   <h1 class="mb-4"><%= activities.title %></h1>
+  <% if (activities.note) { %>
   <p class="text-center">Note to self: <%= activities.note %></p>
+  <% } %>
+  <% if (activities.photo) { %>
   <img src="<%= activities.photo %>" class="activity-photo mb-3" alt="photo of <%= activities.title %>" />
+  <% } %>
+  <% if (activities.experienceDesc) { %>
   <p class="experience text-center"><%= activities.experienceDesc %></p>
+  <% } %>
   <div class="d-inline-flex m-2">
     <form action="/activities/<%= activities.id %>/edit" method="GET">
       <button type="submit" class="btn btn-warning m-3">Edit</button>
